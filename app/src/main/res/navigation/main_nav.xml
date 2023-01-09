@@ -71,6 +71,18 @@
         <action
             android:id="@+id/action_MVTGVDetailsView_to_managerView"
             app:destination="@id/managerView" />
+        <action
+            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVEVAddEmployeeView"
+            app:destination="@id/MVTGVDVEVAddEmployeeView" />
+        <action
+            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVTVAddTaskView"
+            app:destination="@id/MVTGVDVTVAddTaskView" />
+        <action
+            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVTVTimeView"
+            app:destination="@id/MVTGVDVTVTimeView" />
+        <action
+            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVEVTimeView"
+            app:destination="@id/MVTGVDVEVTimeView" />
     </fragment>
     <fragment
         android:id="@+id/MVUVDetailsView"
@@ -91,4 +103,40 @@
         android:name="com.example.whowherewhen.MVTGVDVTasksView"
         android:label="fragment_m_v_t_g_v_d_v_tasks_view"
         tools:layout="@layout/fragment_m_v_t_g_v_d_v_tasks_view" />
+    <fragment
+        android:id="@+id/MVTGVDVEVAddEmployeeView"
+        android:name="com.example.whowherewhen.MVTGVDVEVAddEmployeeView"
+        android:label="fragment_m_v_t_g_v_d_v_e_v_add_employee_view"
+        tools:layout="@layout/fragment_m_v_t_g_v_d_v_e_v_add_employee_view" >
+        <action
+            android:id="@+id/action_MVTGVDVEVAddEmployeeView_to_MVTGVDetailsView"
+            app:destination="@id/MVTGVDetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/MVTGVDVTVAddTaskView"
+        android:name="com.example.whowherewhen.MVTGVDVTVAddTaskView"
+        android:label="fragment_m_v_t_g_v_d_v_t_v_add_task_view"
+        tools:layout="@layout/fragment_m_v_t_g_v_d_v_t_v_add_task_view" >
+        <action
+            android:id="@+id/action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView"
+            app:destination="@id/MVTGVDetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/MVTGVDVTVTimeView"
+        android:name="com.example.whowherewhen.MVTGVDVTVTimeView"
+        android:label="fragment_m_v_t_g_v_d_v_t_v_time_view"
+        tools:layout="@layout/fragment_m_v_t_g_v_d_v_t_v_time_view" >
+        <action
+            android:id="@+id/action_MVTGVDVTVTimeView_to_MVTGVDetailsView"
+            app:destination="@id/MVTGVDetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/MVTGVDVEVTimeView"
+        android:name="com.example.whowherewhen.MVTGVDVEVTimeView"
+        android:label="fragment_m_v_t_g_v_d_v_e_v_time_view"
+        tools:layout="@layout/fragment_m_v_t_g_v_d_v_e_v_time_view" >
+        <action
+            android:id="@+id/action_MVTGVDVEVTimeView_to_MVTGVDetailsView"
+            app:destination="@id/MVTGVDetailsView" />
+    </fragment>
 </navigation>
