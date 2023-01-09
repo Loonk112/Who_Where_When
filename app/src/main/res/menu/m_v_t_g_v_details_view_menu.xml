@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Assigned Employees"
+        android:id="@+id/MVTGVDVMEmployees"
+        android:icon="@drawable/ic_baseline_groups_24" />
+    <item android:title="Group's Tasks"
+        android:id="@+id/MVTGVDVMTasks"
+        android:icon="@drawable/ic_baseline_playlist_add_24" />
+</menu>

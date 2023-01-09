@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Users"
+        android:id="@+id/MVMUsers"
+        android:icon="@drawable/ic_baseline_groups_24"/>
+    <item android:title="Task Groups"
+        android:id="@+id/MVMTaskGroups"
+        android:icon="@drawable/ic_baseline_task_24"/>
+</menu>
