@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Assigned Task Groups"
-        android:id="MVUVDVMTaskGroups"
+        android:id="@+id/MVUVDVMTaskGroups"
         android:icon="@drawable/ic_baseline_task_24"/>
 </menu>

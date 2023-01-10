@@ -11,23 +11,22 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onCreate(db: SQLiteDatabase) {
 
-        var coursesQuery = ("CREATE TABLE $EMPLOYEE_TABLE_NAME ( $EMPLOYEE_ID_COL INTEGER PRIMARY KEY, $EMPLOYEE_NAME_COl TEXT, $EMPLOYEE_SURNAME_COL TEXT, $EMPLOYEE_PERMISSION_COL TEXT)")
-        db.execSQL(coursesQuery)
+        val employeeQuery = ("CREATE TABLE $EMPLOYEE_TABLE_NAME ( $EMPLOYEE_ID_COL INTEGER PRIMARY KEY, $EMPLOYEE_NAME_COl TEXT, $EMPLOYEE_SURNAME_COL TEXT, $EMPLOYEE_PERMISSION_COL TEXT)")
+        db.execSQL(employeeQuery)
         //TODO: Passwords
-        coursesQuery = ("CREATE TABLE $TASK_GROUP_TABLE_NAME ( $TASK_GROUP_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_NAME_COL TEXT)")
-        db.execSQL(coursesQuery)
-        coursesQuery = ("CREATE TABLE $TASK_TABLE_NAME ( $TASK_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_COL INTEGER, $TASK_NAME_COL TEXT," +
+        val taskGroupQuery = ("CREATE TABLE $TASK_GROUP_TABLE_NAME ( $TASK_GROUP_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_NAME_COL TEXT)")
+        db.execSQL(taskGroupQuery)
+        val taskQuery = ("CREATE TABLE $TASK_TABLE_NAME ( $TASK_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_COL INTEGER, $TASK_NAME_COL TEXT," +
                 " FOREIGN KEY ($TASK_GROUP_COL) REFERENCES ${TASK_GROUP_TABLE_NAME}($TASK_GROUP_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
-        db.execSQL(coursesQuery)
-        coursesQuery = ("CREATE TABLE $GROUP_WORKER_TABLE_NAME ( $GROUP_WORKER_ID_COL INTEGER PRIMARY KEY, $GROUP_WORKER_EMPLOYEE_COL INTEGER, $GROUP_WORKER_GROUP_COL INTEGER, " +
+        db.execSQL(taskQuery)
+        val groupWorkerQuery = ("CREATE TABLE $GROUP_WORKER_TABLE_NAME ( $GROUP_WORKER_ID_COL INTEGER PRIMARY KEY, $GROUP_WORKER_EMPLOYEE_COL INTEGER, $GROUP_WORKER_GROUP_COL INTEGER, " +
                 "FOREIGN KEY ($GROUP_WORKER_EMPLOYEE_COL) REFERENCES ${EMPLOYEE_TABLE_NAME}($EMPLOYEE_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE, " +
                 "FOREIGN KEY ($GROUP_WORKER_GROUP_COL) REFERENCES ${TASK_GROUP_TABLE_NAME}($TASK_GROUP_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
-        db.execSQL(coursesQuery)
-        coursesQuery = ("CREATE TABLE $TIME_TABLE_NAME ( $TIME_ID_COL INTEGER PRIMARY KEY, $TIME_EMPLOYEE_COL INTEGER, $TIME_TASK_COL INTEGER, $TIME_START_COL INTEGER, $TIME_STOP_COL INTEGER" +
+        db.execSQL(groupWorkerQuery)
+        val timeQuery = ("CREATE TABLE $TIME_TABLE_NAME ( $TIME_ID_COL INTEGER PRIMARY KEY, $TIME_EMPLOYEE_COL INTEGER, $TIME_TASK_COL INTEGER, $TIME_START_COL INTEGER, $TIME_STOP_COL INTEGER, " +
                 "FOREIGN KEY ($TIME_EMPLOYEE_COL) REFERENCES ${EMPLOYEE_TABLE_NAME}($EMPLOYEE_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE, " +
                 "FOREIGN KEY ($TIME_TASK_COL) REFERENCES ${TASK_TABLE_NAME}($TASK_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
-        db.execSQL(coursesQuery)
-
+        db.execSQL(timeQuery)
     }
 
     override fun onOpen(db: SQLiteDatabase?) {
@@ -60,7 +59,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         db.close()
     }
-    fun deleteCourse(id: Int) {
+    fun deleteEmployee(id: Int) {
         val db = this.writableDatabase
         db.delete(
             EMPLOYEE_TABLE_NAME,
@@ -72,7 +71,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val db = this.readableDatabase
         val sql = "SELECT * FROM $EMPLOYEE_TABLE_NAME"
-        val storeCourses = ArrayList<EmployeeData>()
+        val storeEmployees = ArrayList<EmployeeData>()
         val cursor = db.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             do {
@@ -80,19 +79,57 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 val name = cursor.getString(1)
                 val surname = cursor.getString(2)
                 val perms = cursor.getString(3)
-                storeCourses.add(EmployeeData(id, name, surname, perms))
+                storeEmployees.add(EmployeeData(id, name, surname, perms))
             }
             while (cursor.moveToNext())
         }
         cursor.close()
 
-        return storeCourses
+        return storeEmployees
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////Passwords
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Task Groups
 
+    fun addTaskGroup(name : String){
+
+        val values = ContentValues()
+
+        values.put(TASK_GROUP_NAME_COL, name)
+
+        val db = this.writableDatabase
+
+        db.insert(TASK_GROUP_TABLE_NAME, null, values)
+
+        db.close()
+    }
+    fun deleteTaskGroup(id: Int) {
+        val db = this.writableDatabase
+        db.delete(
+            TASK_GROUP_TABLE_NAME,
+            "$TASK_GROUP_ID_COL = ?",
+            arrayOf(id.toString())
+        )
+    }
+    fun getAllTaskGroups(): ArrayList<TaskGroupData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT * FROM $TASK_GROUP_TABLE_NAME"
+        val storeTaskGroups = ArrayList<TaskGroupData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                storeTaskGroups.add(TaskGroupData(id, name))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeTaskGroups
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Tasks
 

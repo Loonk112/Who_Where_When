@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 
@@ -28,7 +30,18 @@ class MVTGVAddTaskGroupView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_MVTGVAddTaskGroupView_to_managerView)
         }
 
-        //TODO
+        val nameInput = view.findViewById<EditText>(R.id.MVTGVATGVTaskGroupNameInput)
+
+        val confirmButton = view.findViewById<Button>(R.id.MVTGVATGVConfirm)
+        confirmButton.setOnClickListener {
+            if (nameInput.text.isEmpty()) {
+                Toast.makeText(context, "Name must be filled to add Task Group", Toast.LENGTH_SHORT).show()
+            } else {
+                val db = DBHelper(requireContext(), null)
+                db.addTaskGroup(nameInput.text.toString())
+                Navigation.findNavController(view).navigate(R.id.action_MVTGVAddTaskGroupView_to_managerView)
+            }
+        }
 
     }
 }

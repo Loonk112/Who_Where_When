@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MVTGVDetailsView : Fragment() {
@@ -23,17 +24,30 @@ class MVTGVDetailsView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<Button>(R.id.MVTGVDVReturn)
+        loadFragment(MVTGVDVEmployeesView())
+
+        val returnButton = view.findViewById<ImageButton>(R.id.MVTGVDVReturn)
         returnButton.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_MVTGVDetailsView_to_managerView)
         }
 
-        //TODO
+        val bottomNav = view.findViewById<BottomNavigationView>(R.id.MVTGVDVBottomNav)
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.MVTGVDVMEmployees -> {
+                    loadFragment(MVTGVDVEmployeesView())
+                }
+                R.id.MVTGVDVMTasks -> {
+                    loadFragment(MVTGVDVTasksView())
+                }
+            }
+            true
+        }
     }
 
     private  fun loadFragment(fragment: Fragment){
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.MVContainer,fragment)
+        transaction.replace(R.id.MVTGVDVContainer,fragment)
         transaction.commit()
     }
 }
