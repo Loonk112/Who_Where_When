@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVUsersView">
+    tools:context=".MVEmployeesView">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -17,7 +17,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MVUVRecyclerView"
+        android:id="@+id/MVEVRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
@@ -27,11 +27,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/MVUVFloatingActionButton"
+        android:id="@+id/MVEVFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:clickable="true"
+        android:contentDescription="Add new employee"
         android:src="@drawable/ic_baseline_person_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

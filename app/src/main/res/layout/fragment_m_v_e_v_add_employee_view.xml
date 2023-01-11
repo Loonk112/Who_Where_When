@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVUVAddUserView">
+    tools:context=".MVEVAddEmployeeView">
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +15,7 @@
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/teal_200"
-        android:text="Add New User" />
+        android:text="Add New Employee" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,21 +31,25 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/teal_200"
+        style="?android:attr/buttonBarButtonStyle">
 
         <Button
-            android:id="@+id/MVUVAUVCancel"
+            android:id="@+id/MVEVAEVCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="Cancel"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
-            android:id="@+id/MVUVAUVConfirm"
+            android:id="@+id/MVEVAEVConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Confirm" />
+            android:text="Confirm"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

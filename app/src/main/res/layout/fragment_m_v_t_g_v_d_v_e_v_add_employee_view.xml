@@ -31,13 +31,16 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/teal_200"
+        style="?android:attr/buttonBarButtonStyle">
 
         <Button
             android:id="@+id/MVTGVDVEVAEVCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
             android:text="Cancel" />
 
         <Button
@@ -45,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
             android:text="Confirm" />
     </LinearLayout>
 

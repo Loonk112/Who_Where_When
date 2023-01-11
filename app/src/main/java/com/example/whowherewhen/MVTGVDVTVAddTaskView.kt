@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 
@@ -25,6 +27,19 @@ class MVTGVDVTVAddTaskView : Fragment() {
 
         val cancelButton = view.findViewById<Button>(R.id.MVTGVDVTVATVCancel)
         cancelButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView)
+        }
+
+        val input = view.findViewById<EditText>(R.id.MVTGVDVTVATVNameInput)
+        val confirmButton = view.findViewById<Button>(R.id.MVTGVDVTVATVConfirm)
+        confirmButton.setOnClickListener {
+            if (input.text.isEmpty()) {
+                Toast.makeText(context, "Name must be filled to add Task", Toast.LENGTH_SHORT).show()
+            } else {
+                val db = DBHelper(requireContext(), null)
+                val keeper = Keeper()
+                db.addTaskToGroup(keeper.getTaskGroupId(), input.text.toString())
+            }
             Navigation.findNavController(view).navigate(R.id.action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView)
         }
     }

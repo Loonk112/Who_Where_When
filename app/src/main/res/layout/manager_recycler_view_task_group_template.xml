@@ -11,7 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:srcCompat="@drawable/ic_baseline_remove_24" />
+        app:srcCompat="@drawable/ic_baseline_remove_24"
+        android:contentDescription="Remove task group"/>
 
     <TextView
         android:id="@+id/MVTGVRVITTaskGroupId"
@@ -34,6 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:contentDescription="See task group details"/>
 
 </LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <ImageButton
+        android:id="@+id/MVTGVDVTVRVTDeleteTask"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        app:srcCompat="@drawable/ic_baseline_remove_24"
+        android:contentDescription="Delete task"/>
+
+    <TextView
+        android:id="@+id/MVTGVDVTVRVTTaskId"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="ID" />
+
+    <TextView
+        android:id="@+id/MVTGVDVTVRVTTaskName"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center_vertical"
+        android:text="Task Name" />
+
+    <Button
+        android:id="@+id/MVTGVDVTVRVTStatus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center"
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="Status" />
+
+    <ImageButton
+        android:id="@+id/MVTGVDVTVRVTTaskTime"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        app:srcCompat="@drawable/ic_baseline_access_time_24"
+        android:contentDescription="See Task Time table"/>
+
+</LinearLayout>

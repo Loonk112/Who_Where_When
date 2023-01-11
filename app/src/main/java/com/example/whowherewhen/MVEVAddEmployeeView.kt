@@ -9,30 +9,24 @@ import android.widget.Button
 import androidx.navigation.Navigation
 
 
-class MVUVDetailsView : Fragment() {
+class MVEVAddEmployeeView : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_u_v_details_view, container, false)
+        return inflater.inflate(R.layout.fragment_m_v_e_v_add_employee_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<Button>(R.id.MVUVDVReturn)
-        returnButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_MVUVDetailsView_to_managerView)
+        val cancel = view.findViewById<Button>(R.id.MVEVAEVCancel)
+        cancel.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_MVEVAddEmployeeView_to_managerView)
         }
 
         //TODO
-    }
-
-    private  fun loadFragment(fragment: Fragment){
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.MVContainer,fragment)
-        transaction.commit()
     }
 }

@@ -23,8 +23,8 @@
             android:id="@+id/action_managerView_to_loginView"
             app:destination="@id/loginView" />
         <action
-            android:id="@+id/action_managerView_to_MVUVAddUserView"
-            app:destination="@id/MVUVAddUserView" />
+            android:id="@+id/action_managerView_to_MVEVAddEmployeeView"
+            app:destination="@id/MVEVAddEmployeeView" />
         <action
             android:id="@+id/action_managerView_to_MVTGVAddTaskGroupView"
             app:destination="@id/MVTGVAddTaskGroupView" />
@@ -32,26 +32,26 @@
             android:id="@+id/action_managerView_to_MVTGVDetailsView"
             app:destination="@id/MVTGVDetailsView" />
         <action
-            android:id="@+id/action_managerView_to_MVUVDetailsView"
-            app:destination="@id/MVUVDetailsView" />
+            android:id="@+id/action_managerView_to_MVEVDetailsView"
+            app:destination="@id/MVEVDetailsView" />
     </fragment>
     <fragment
-        android:id="@+id/MVUsersView"
-        android:name="com.example.whowherewhen.MVUsersView"
+        android:id="@+id/MVEmployeesView"
+        android:name="com.example.whowherewhen.MVEmployeesView"
         android:label="fragment_m_v_users_view"
-        tools:layout="@layout/fragment_m_v_users_view" />
+        tools:layout="@layout/fragment_m_v_employees_view" />
     <fragment
         android:id="@+id/MVTaskGroupsView"
         android:name="com.example.whowherewhen.MVTaskGroupsView"
         android:label="fragment_m_v_task_groups_view"
         tools:layout="@layout/fragment_m_v_task_groups_view" />
     <fragment
-        android:id="@+id/MVUVAddUserView"
-        android:name="com.example.whowherewhen.MVUVAddUserView"
+        android:id="@+id/MVEVAddEmployeeView"
+        android:name="com.example.whowherewhen.MVEVAddEmployeeView"
         android:label="fragment_m_v_u_v_add_user_view"
-        tools:layout="@layout/fragment_m_v_u_v_add_user_view" >
+        tools:layout="@layout/fragment_m_v_e_v_add_employee_view" >
         <action
-            android:id="@+id/action_MVUVAddUserView_to_managerView"
+            android:id="@+id/action_MVEVAddEmployeeView_to_managerView"
             app:destination="@id/managerView" />
     </fragment>
     <fragment
@@ -85,12 +85,12 @@
             app:destination="@id/MVTGVDVEVTimeView" />
     </fragment>
     <fragment
-        android:id="@+id/MVUVDetailsView"
-        android:name="com.example.whowherewhen.MVUVDetailsView"
+        android:id="@+id/MVEVDetailsView"
+        android:name="com.example.whowherewhen.MVEmployeeVDetailsView"
         android:label="fragment_m_v_u_v_details_view"
-        tools:layout="@layout/fragment_m_v_u_v_details_view" >
+        tools:layout="@layout/fragment_m_v_e_v_details_view" >
         <action
-            android:id="@+id/action_MVUVDetailsView_to_managerView"
+            android:id="@+id/action_MVEVDetailsView_to_managerView"
             app:destination="@id/managerView" />
     </fragment>
     <fragment

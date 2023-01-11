@@ -17,12 +17,12 @@ class MVTGVRecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupDa
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MVTGVRecyclerViewAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.m_v_t_g_v_recycler_view_item_template, parent, false)
-        return MVTGVRecyclerViewAdapter.ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.manager_recycler_view_task_group_template, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MVTGVRecyclerViewAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.idView.text = taskGroupList[position].id.toString()
         holder.nameView.text = taskGroupList[position].name
@@ -35,7 +35,8 @@ class MVTGVRecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupDa
         }
 
         holder.detailBtn.setOnClickListener {
-            //TODO: Assistant class/object
+            val keeper = Keeper()
+            keeper.setTaskGroupId(taskGroupList[position].id)
             Navigation.findNavController(holder.view).navigate(R.id.action_managerView_to_MVTGVDetailsView)
         }
     }

@@ -28,13 +28,13 @@ class ManagerView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_managerView_to_loginView)
         }
 
-        loadFragment(MVUsersView())
+        loadFragment(MVEmployeesView())
 
         val bNav = view.findViewById<BottomNavigationView>(R.id.MVBottomNav)
         bNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.MVMUsers -> {
-                    loadFragment(MVUsersView())
+                    loadFragment(MVEmployeesView())
                 }
                 R.id.MVMTaskGroups -> {
                     loadFragment(MVTaskGroupsView())

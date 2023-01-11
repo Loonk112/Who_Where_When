@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
@@ -16,8 +15,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         //TODO: Passwords
         val taskGroupQuery = ("CREATE TABLE $TASK_GROUP_TABLE_NAME ( $TASK_GROUP_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_NAME_COL TEXT)")
         db.execSQL(taskGroupQuery)
-        val taskQuery = ("CREATE TABLE $TASK_TABLE_NAME ( $TASK_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_COL INTEGER, $TASK_NAME_COL TEXT," +
-                " FOREIGN KEY ($TASK_GROUP_COL) REFERENCES ${TASK_GROUP_TABLE_NAME}($TASK_GROUP_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
+        val taskQuery = ("CREATE TABLE $TASK_TABLE_NAME ( $TASK_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_COL INTEGER, $TASK_NAME_COL TEXT, $TASK_STATUS_COL INTEGER, " +
+                "FOREIGN KEY ($TASK_GROUP_COL) REFERENCES ${TASK_GROUP_TABLE_NAME}($TASK_GROUP_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
         db.execSQL(taskQuery)
         val groupWorkerQuery = ("CREATE TABLE $GROUP_WORKER_TABLE_NAME ( $GROUP_WORKER_ID_COL INTEGER PRIMARY KEY, $GROUP_WORKER_EMPLOYEE_COL INTEGER, $GROUP_WORKER_GROUP_COL INTEGER, " +
                 "FOREIGN KEY ($GROUP_WORKER_EMPLOYEE_COL) REFERENCES ${EMPLOYEE_TABLE_NAME}($EMPLOYEE_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE, " +
@@ -133,6 +132,53 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Tasks
 
+    fun addTaskToGroup(groupId: Int, name : String){
+        val values = ContentValues()
+        values.put(TASK_NAME_COL, name)
+        values.put(TASK_GROUP_COL, groupId)
+        values.put(TASK_STATUS_COL, 0)
+
+        val db = this.writableDatabase
+
+        db.insert(TASK_TABLE_NAME, null, values)
+
+        db.close()
+    }
+    fun deleteTask(id: Int) {
+        val db = this.writableDatabase
+        db.delete(
+            TASK_TABLE_NAME,
+            "$TASK_ID_COL = ?",
+            arrayOf(id.toString())
+        )
+    }
+    fun getTaskGroupTasks(desiredGroupId: Int): ArrayList<TaskData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT * FROM $TASK_TABLE_NAME WHERE $TASK_GROUP_COL == $desiredGroupId"
+        val storeTasks = ArrayList<TaskData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val groupID = cursor.getString(1).toInt()
+                val name = cursor.getString(2)
+                val status = cursor.getString(3).toInt()
+                storeTasks.add(TaskData(id, groupID, name, status))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeTasks
+    }
+
+    fun changeTaskStatus(id: Int, status: Int) {
+        val db = this.writableDatabase
+        val rawSQL = "UPDATE $TASK_TABLE_NAME SET $TASK_STATUS_COL = $status WHERE $TASK_ID_COL = $id"
+        db.execSQL(rawSQL)
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Group - Worker
 
@@ -143,7 +189,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         private const val DATABASE_NAME = "MAIN_DATABASE"
 
-        private val DATABASE_VERSION = 1
+        private val DATABASE_VERSION = 2
 
         const val EMPLOYEE_TABLE_NAME = "employee_table"
         const val EMPLOYEE_ID_COL = "id"
@@ -161,6 +207,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         const val TASK_ID_COL = "id"
         const val TASK_GROUP_COL = "group_id"
         const val TASK_NAME_COL = "name"
+        const val TASK_STATUS_COL = "status"
 
         const val GROUP_WORKER_TABLE_NAME = "group_worker_table"
         const val GROUP_WORKER_ID_COL = "id"
