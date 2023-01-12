@@ -20,9 +20,86 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"></LinearLayout>
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3">
+
+        <EditText
+            android:id="@+id/MVEVAEVNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/MVEVAEVSurnameInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Surname" />
+
+        <RadioGroup
+            android:id="@+id/MVEVAEVRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/MVEVAEVRadioManager"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Manager" />
+
+            <RadioButton
+                android:id="@+id/MVEVAEVRadioEmployee"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Employee" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/MVEVAEVLoginInput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Login" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/MVEVAEVPasswordOneInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Password" />
+
+            <EditText
+                android:id="@+id/MVEVAEVPasswordTwoInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Confirm Password" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"

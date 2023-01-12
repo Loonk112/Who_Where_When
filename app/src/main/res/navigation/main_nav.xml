@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/MVEVDetailsView"
-        android:name="com.example.whowherewhen.MVEmployeeVDetailsView"
+        android:name="com.example.whowherewhen.MVEVDetailsView"
         android:label="fragment_m_v_u_v_details_view"
         tools:layout="@layout/fragment_m_v_e_v_details_view" >
         <action

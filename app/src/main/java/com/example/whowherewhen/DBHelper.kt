@@ -12,7 +12,9 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val employeeQuery = ("CREATE TABLE $EMPLOYEE_TABLE_NAME ( $EMPLOYEE_ID_COL INTEGER PRIMARY KEY, $EMPLOYEE_NAME_COl TEXT, $EMPLOYEE_SURNAME_COL TEXT, $EMPLOYEE_PERMISSION_COL TEXT)")
         db.execSQL(employeeQuery)
-        //TODO: Passwords
+        val passQuery = ("CREATE TABLE $PASS_TABLE_NAME ( $PASS_ID_COL INTEGER PRIMARY KEY, $PASS_EMPLOYEE_COL INTEGER, $PASS_LOGIN_COl TEXT, $PASS_BODY_COl TEXT, " +
+                "FOREIGN KEY ($PASS_EMPLOYEE_COL) REFERENCES ${EMPLOYEE_TABLE_NAME}($EMPLOYEE_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
+        db.execSQL(passQuery)
         val taskGroupQuery = ("CREATE TABLE $TASK_GROUP_TABLE_NAME ( $TASK_GROUP_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_NAME_COL TEXT)")
         db.execSQL(taskGroupQuery)
         val taskQuery = ("CREATE TABLE $TASK_TABLE_NAME ( $TASK_ID_COL INTEGER PRIMARY KEY, $TASK_GROUP_COL INTEGER, $TASK_NAME_COL TEXT, $TASK_STATUS_COL INTEGER, " +
@@ -86,8 +88,44 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         return storeEmployees
     }
+
+    fun changeEmployeePerms(id: Int, perms: String) {
+        val db = this.writableDatabase
+        val rawSQL = "UPDATE $EMPLOYEE_TABLE_NAME SET $EMPLOYEE_PERMISSION_COL = '$perms' WHERE $EMPLOYEE_ID_COL = $id"
+        db.execSQL(rawSQL)
+    }
+
+    fun getLastAddedEmployeeID(): Int {
+        val db = this.readableDatabase
+        val sql = "SELECT $EMPLOYEE_ID_COL FROM $EMPLOYEE_TABLE_NAME ORDER BY $EMPLOYEE_ID_COL DESC LIMIT 1"
+        var id = 0
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                id = cursor.getString(0).toInt()
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return id
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////Passwords
 
+    fun addPassword(employee_id : Int, login : String, body : String){
+
+        val values = ContentValues()
+
+        values.put(PASS_EMPLOYEE_COL, employee_id)
+        values.put(PASS_LOGIN_COl, login)
+        values.put(PASS_BODY_COl, body)
+
+        val db = this.writableDatabase
+
+        db.insert(PASS_TABLE_NAME, null, values)
+
+        db.close()
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Task Groups
 
@@ -189,7 +227,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         private const val DATABASE_NAME = "MAIN_DATABASE"
 
-        private val DATABASE_VERSION = 2
+        private val DATABASE_VERSION = 4
 
         const val EMPLOYEE_TABLE_NAME = "employee_table"
         const val EMPLOYEE_ID_COL = "id"
@@ -197,7 +235,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         const val EMPLOYEE_SURNAME_COL = "surname"
         const val EMPLOYEE_PERMISSION_COL = "permission"
 
-        //TODO: PASSWORDS TABLE
+        const val PASS_TABLE_NAME = "password_table"
+        const val PASS_ID_COL = "id"
+        const val PASS_EMPLOYEE_COL = "employee_id"
+        const val PASS_LOGIN_COl = "login"
+        const val PASS_BODY_COl = "pass"
 
         const val TASK_GROUP_TABLE_NAME = "task_group_table"
         const val TASK_GROUP_ID_COL = "id"

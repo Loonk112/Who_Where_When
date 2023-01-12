@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MVTGVDVTVRecyclerViewAdapter (private val taskList: ArrayList<TaskData>) : RecyclerView.Adapter<MVTGVDVTVRecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-        val deleteBtn = view.findViewById<ImageButton>(R.id.MVTGVDVTVRVTDeleteTask)!!
-        val idView = view.findViewById<TextView>(R.id.MVTGVDVTVRVTTaskId)!!
-        val nameView = view.findViewById<TextView>(R.id.MVTGVDVTVRVTTaskName)!!
-        val status = view.findViewById<Button>(R.id.MVTGVDVTVRVTStatus)!!
-        val timeBtn = view.findViewById<ImageButton>(R.id.MVTGVDVTVRVTTaskTime)!!
+        val deleteBtn = view.findViewById<ImageButton>(R.id.MRVTVDeleteTask)!!
+        val idView = view.findViewById<TextView>(R.id.MRVTVTaskId)!!
+        val nameView = view.findViewById<TextView>(R.id.MRVTVTaskName)!!
+        val status = view.findViewById<Button>(R.id.MRVTVStatus)!!
+        val timeBtn = view.findViewById<ImageButton>(R.id.MRVTVTaskTime)!!
     }
 
 

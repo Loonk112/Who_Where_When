@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MVTGVRecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<MVTGVRecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-        val deleteBtn = view.findViewById<ImageButton>(R.id.MVTGVRVITDeleteTaskGroup)!!
-        val idView = view.findViewById<TextView>(R.id.MVTGVRVITTaskGroupId)!!
-        val nameView = view.findViewById<TextView>(R.id.MVTGVRVITTaskGroupName)!!
-        val detailBtn = view.findViewById<ImageButton>(R.id.MVTGVRVITTaskGroupDetails)!!
+        val deleteBtn = view.findViewById<ImageButton>(R.id.MRVTGTDeleteTaskGroup)!!
+        val idView = view.findViewById<TextView>(R.id.MRVTGTTaskGroupId)!!
+        val nameView = view.findViewById<TextView>(R.id.MRVTGTTaskGroupName)!!
+        val detailBtn = view.findViewById<ImageButton>(R.id.MRVTGTTaskGroupDetails)!!
     }
 
 

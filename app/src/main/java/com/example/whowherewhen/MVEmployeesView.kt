@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MVEmployeesView : Fragment() {
@@ -15,7 +17,16 @@ class MVEmployeesView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_employees_view, container, false)
+        val view =  inflater.inflate(R.layout.fragment_m_v_employees_view, container, false)
+        val recycler = view.findViewById<RecyclerView>(R.id.MVEVRecyclerView)
+        recycler.layoutManager = LinearLayoutManager(activity)
+
+        val db = DBHelper(requireContext(), null)
+        val data = db.getAllEmployees()
+
+        recycler.adapter = MVEVRecyclerViewAdapter(data)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
