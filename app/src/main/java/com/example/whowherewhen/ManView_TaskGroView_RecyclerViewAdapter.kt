@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 
-class MVTGVRecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<MVTGVRecyclerViewAdapter.ViewHolder>()  {
+class ManView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<ManView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-        val deleteBtn = view.findViewById<ImageButton>(R.id.MRVTGTDeleteTaskGroup)!!
-        val idView = view.findViewById<TextView>(R.id.MRVTGTTaskGroupId)!!
-        val nameView = view.findViewById<TextView>(R.id.MRVTGTTaskGroupName)!!
-        val detailBtn = view.findViewById<ImageButton>(R.id.MRVTGTTaskGroupDetails)!!
+        val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_DeleteTaskGroup)!!
+        val idView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupId)!!
+        val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupName)!!
+        val detailBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_TaskGroupDetails)!!
     }
 
 
@@ -37,7 +37,7 @@ class MVTGVRecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupDa
         holder.detailBtn.setOnClickListener {
             val keeper = Keeper()
             keeper.setTaskGroupId(taskGroupList[position].id)
-            Navigation.findNavController(holder.view).navigate(R.id.action_managerView_to_MVTGVDetailsView)
+            Navigation.findNavController(holder.view).navigate(R.id.action_managerView_to_ManView_TaskGroView_DetailsView)
         }
     }
 

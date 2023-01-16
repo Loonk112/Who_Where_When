@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/MVReturn"
+            android:id="@+id/ManView_Return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -38,7 +38,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/MVContainer"
+        android:id="@+id/ManView_Container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
@@ -50,7 +50,7 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/MVBottomNav"
+        android:id="@+id/ManView_BottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:menu="@menu/manager_view_menu"

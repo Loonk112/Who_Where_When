@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVTGVDetailsView">
+    tools:context=".ManView_TaskGroView_DetailsView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,10 +27,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/MVTGVDVReturn"
+            android:id="@+id/ManView_TaskGroView_DetView_Return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_arrow_back_24"
+            android:contentDescription="Return to Task Group view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +39,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/MVTGVDVContainer"
+        android:id="@+id/ManView_TaskGroView_DetView_Container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
@@ -50,7 +51,7 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/MVTGVDVBottomNav"
+        android:id="@+id/ManView_TaskGroView_DetView_BottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:menu="@menu/m_v_t_g_v_details_view_menu"

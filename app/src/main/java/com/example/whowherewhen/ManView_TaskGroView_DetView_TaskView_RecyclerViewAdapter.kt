@@ -9,18 +9,18 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 
-class MVTGVDVTVRecyclerViewAdapter (private val taskList: ArrayList<TaskData>) : RecyclerView.Adapter<MVTGVDVTVRecyclerViewAdapter.ViewHolder>()  {
+class ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter (private val taskList: ArrayList<TaskData>) : RecyclerView.Adapter<ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-        val deleteBtn = view.findViewById<ImageButton>(R.id.MRVTVDeleteTask)!!
-        val idView = view.findViewById<TextView>(R.id.MRVTVTaskId)!!
-        val nameView = view.findViewById<TextView>(R.id.MRVTVTaskName)!!
-        val status = view.findViewById<Button>(R.id.MRVTVStatus)!!
-        val timeBtn = view.findViewById<ImageButton>(R.id.MRVTVTaskTime)!!
+        val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskTemp2_DeleteTask)!!
+        val idView = view.findViewById<TextView>(R.id.ManRecView_TaskTemp2_TaskId)!!
+        val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskTemp2_TaskName)!!
+        val status = view.findViewById<Button>(R.id.ManRecView_TaskTemp2_Status)!!
+        val timeBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskTemp2_TaskTime)!!
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.manager_recycler_view_task_template, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.manager_recycler_view_task_template_2, parent, false)
         return ViewHolder(view)
     }
 
@@ -45,7 +45,7 @@ class MVTGVDVTVRecyclerViewAdapter (private val taskList: ArrayList<TaskData>) :
         holder.timeBtn.setOnClickListener {
             val keeper = Keeper()
             keeper.setTaskId(taskList[position].id)
-            Navigation.findNavController(holder.view).navigate(R.id.action_MVTGVDetailsView_to_MVTGVDVTVTimeView)
+            Navigation.findNavController(holder.view).navigate(R.id.action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_TaskView_TimeView)
         }
 
         holder.status.setOnClickListener {

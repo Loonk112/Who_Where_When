@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 
-class MVEVRecyclerViewAdapter (private val employeeList: ArrayList<EmployeeData>) : RecyclerView.Adapter<MVEVRecyclerViewAdapter.ViewHolder>()  {
+class ManView_EmpView_RecyclerViewAdapter (private val employeeList: ArrayList<EmployeeData>) : RecyclerView.Adapter<ManView_EmpView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-        val deleteBtn = view.findViewById<ImageButton>(R.id.MRVETDeleteEmployee)!!
-        val idView = view.findViewById<TextView>(R.id.MRVETEmployeeId)!!
-        val nameView = view.findViewById<TextView>(R.id.MRVETEmployeeName)!!
-        val surnameView = view.findViewById<TextView>(R.id.MRVETEmployeeSurname)!!
-        val permBtn = view.findViewById<Button>(R.id.MRVETEmployeePerm)!!
-        val detailsBtn = view.findViewById<ImageButton>(R.id.MRVETEmployeeDetails)!!
+        val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_EmpTemp_DeleteEmployee)!!
+        val idView = view.findViewById<TextView>(R.id.ManRecView_EmpTemp_EmployeeId)!!
+        val nameView = view.findViewById<TextView>(R.id.ManRecView_EmpTemp_EmployeeName)!!
+        val surnameView = view.findViewById<TextView>(R.id.ManRecView_EmpTemp_EmployeeSurname)!!
+        val permBtn = view.findViewById<Button>(R.id.ManRecView_EmpTemp_EmployeePerm)!!
+        val detailsBtn = view.findViewById<ImageButton>(R.id.ManRecView_EmpTemp_EmployeeDetails)!!
     }
 
 
@@ -42,7 +42,7 @@ class MVEVRecyclerViewAdapter (private val employeeList: ArrayList<EmployeeData>
 
         holder.detailsBtn.setOnClickListener {
             keeper.setEmployeeId(employeeList[position].id)
-            Navigation.findNavController(holder.view).navigate(R.id.action_managerView_to_MVEVDetailsView)
+            Navigation.findNavController(holder.view).navigate(R.id.action_managerView_to_ManView_EmpView_DetailsView)
         }
 
         holder.permBtn.setOnClickListener {

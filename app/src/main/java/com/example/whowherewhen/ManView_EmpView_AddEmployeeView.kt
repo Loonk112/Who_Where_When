@@ -12,14 +12,14 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 
 
-class MVEVAddEmployeeView : Fragment() {
+class ManView_EmpView_AddEmployeeView : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_e_v_add_employee_view, container, false)
+        return inflater.inflate(R.layout.fragment_man_view_emp_view_add_employee_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class MVEVAddEmployeeView : Fragment() {
 
         val cancel = view.findViewById<Button>(R.id.MVEVAEVCancel)
         cancel.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_MVEVAddEmployeeView_to_managerView)
+            Navigation.findNavController(view).navigate(R.id.action_ManView_EmpView_AddEmployeeView_to_managerView)
         }
 
         val confirm = view.findViewById<Button>(R.id.MVEVAEVConfirm)
@@ -54,7 +54,7 @@ class MVEVAddEmployeeView : Fragment() {
                         db.addEmployee(nameIn.text.toString(), surnameIn.text.toString(), "Manager")
                     }
                     db.addPassword(db.getLastAddedEmployeeID(), loginIn.text.toString(), passOneIn.text.toString())
-                    Navigation.findNavController(view).navigate(R.id.action_MVEVAddEmployeeView_to_managerView)
+                    Navigation.findNavController(view).navigate(R.id.action_ManView_EmpView_AddEmployeeView_to_managerView)
                 }
             }
         }

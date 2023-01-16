@@ -7,7 +7,7 @@
 
 
     <ImageButton
-        android:id="@+id/MRVTVDeleteTask"
+        android:id="@+id/ManRecView_TaskTemp2_DeleteTask"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -15,7 +15,7 @@
         android:contentDescription="Delete task"/>
 
     <TextView
-        android:id="@+id/MRVTVTaskId"
+        android:id="@+id/ManRecView_TaskTemp2_TaskId"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -23,7 +23,7 @@
         android:text="ID" />
 
     <TextView
-        android:id="@+id/MRVTVTaskName"
+        android:id="@+id/ManRecView_TaskTemp2_TaskName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
@@ -31,7 +31,7 @@
         android:text="Task Name" />
 
     <Button
-        android:id="@+id/MRVTVStatus"
+        android:id="@+id/ManRecView_TaskTemp2_Status"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
@@ -41,7 +41,7 @@
         android:text="Status" />
 
     <ImageButton
-        android:id="@+id/MRVTVTaskTime"
+        android:id="@+id/ManRecView_TaskTemp2_TaskTime"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"

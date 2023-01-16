@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 
 
-class MVTGVDVTVAddTaskView : Fragment() {
+class ManView_TaskGroView_DetView_TaskView_AddTaskView : Fragment() {
 
 
     override fun onCreateView(
@@ -19,19 +19,19 @@ class MVTGVDVTVAddTaskView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_t_g_v_d_v_t_v_add_task_view, container, false)
+        return inflater.inflate(R.layout.fragment_man_view_task_gro_view_det_view_task_view_add_task_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cancelButton = view.findViewById<Button>(R.id.MVTGVDVTVATVCancel)
+        val cancelButton = view.findViewById<Button>(R.id.ManView_TaskGroView_DetView_TaskView_AddTaskView_Cancel)
         cancelButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView)
+            Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_TaskView_AddTaskView_to_ManView_TaskGroView_DetailsView)
         }
 
-        val input = view.findViewById<EditText>(R.id.MVTGVDVTVATVNameInput)
-        val confirmButton = view.findViewById<Button>(R.id.MVTGVDVTVATVConfirm)
+        val input = view.findViewById<EditText>(R.id.ManView_TaskGroView_DetView_TaskView_AddTaskView_NameInput)
+        val confirmButton = view.findViewById<Button>(R.id.ManView_TaskGroView_DetView_TaskView_AddTaskView_Confirm)
         confirmButton.setOnClickListener {
             if (input.text.isEmpty()) {
                 Toast.makeText(context, "Name must be filled to add Task", Toast.LENGTH_SHORT).show()
@@ -40,7 +40,7 @@ class MVTGVDVTVAddTaskView : Fragment() {
                 val keeper = Keeper()
                 db.addTaskToGroup(keeper.getTaskGroupId(), input.text.toString())
             }
-            Navigation.findNavController(view).navigate(R.id.action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView)
+            Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_TaskView_AddTaskView_to_ManView_TaskGroView_DetailsView)
         }
     }
 }

@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 
 
-class MVTGVAddTaskGroupView : Fragment() {
+class ManView_TaskGroView_AddTaskGroupView : Fragment() {
 
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class MVTGVAddTaskGroupView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_t_g_v_add_task_group_view, container, false)
+        return inflater.inflate(R.layout.fragment_man_view_task_gro_view_add_task_group_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class MVTGVAddTaskGroupView : Fragment() {
 
         val cancel = view.findViewById<Button>(R.id.MVTGVATGVCancel)
         cancel.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_MVTGVAddTaskGroupView_to_managerView)
+            Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_AddTaskGroupView_to_managerView)
         }
 
         val nameInput = view.findViewById<EditText>(R.id.MVTGVATGVTaskGroupNameInput)
@@ -39,7 +39,7 @@ class MVTGVAddTaskGroupView : Fragment() {
             } else {
                 val db = DBHelper(requireContext(), null)
                 db.addTaskGroup(nameInput.text.toString())
-                Navigation.findNavController(view).navigate(R.id.action_MVTGVAddTaskGroupView_to_managerView)
+                Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_AddTaskGroupView_to_managerView)
             }
         }
 

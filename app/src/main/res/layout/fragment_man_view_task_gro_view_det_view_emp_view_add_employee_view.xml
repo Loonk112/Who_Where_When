@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVTGVDVEVAddEmployeeView">
+    tools:context=".ManView_TaskGroView_DetView_EmpView_AddEmployeeView">
 
     <TextView
         android:id="@+id/textView3"

@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.navigation.Navigation
 
-class MVTGVDVTVTimeView : Fragment() {
+
+class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
 
 
     override fun onCreateView(
@@ -17,15 +17,16 @@ class MVTGVDVTVTimeView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_m_v_t_g_v_d_v_t_v_time_view, container, false)
+        return inflater.inflate(R.layout.fragment_man_view_task_gro_view_det_view_emp_view_time_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<ImageButton>(R.id.MVTGVDVTVTVReturn)
+        val returnButton = view.findViewById<ImageButton>(R.id.MVTGVDVEVTVReturn)
         returnButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_MVTGVDVTVTimeView_to_MVTGVDetailsView)
+            Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_EmpView_TimeView_to_ManView_TaskGroView_DetailsView)
         }
+
     }
 }

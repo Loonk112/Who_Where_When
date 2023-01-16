@@ -23,21 +23,21 @@ class ManagerView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<ImageButton>(R.id.MVReturn)
+        val returnButton = view.findViewById<ImageButton>(R.id.ManView_Return)
         returnButton.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_managerView_to_loginView)
         }
 
-        loadFragment(MVEmployeesView())
+        loadFragment(ManView_EmployeesView())
 
-        val bNav = view.findViewById<BottomNavigationView>(R.id.MVBottomNav)
+        val bNav = view.findViewById<BottomNavigationView>(R.id.ManView_BottomNav)
         bNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.MVMUsers -> {
-                    loadFragment(MVEmployeesView())
+                    loadFragment(ManView_EmployeesView())
                 }
                 R.id.MVMTaskGroups -> {
-                    loadFragment(MVTaskGroupsView())
+                    loadFragment(ManView_TaskGroupsView())
                 }
             }
             true
@@ -49,7 +49,7 @@ class ManagerView : Fragment() {
 
     private  fun loadFragment(fragment: Fragment){
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.MVContainer,fragment)
+        transaction.replace(R.id.ManView_Container,fragment)
         transaction.commit()
     }
 }

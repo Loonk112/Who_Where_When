@@ -7,7 +7,7 @@
 
 
     <ImageButton
-        android:id="@+id/MRVTGTDeleteTaskGroup"
+        android:id="@+id/ManRecView_TaskGroTemp_DeleteTaskGroup"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -15,7 +15,7 @@
         android:contentDescription="Remove task group"/>
 
     <TextView
-        android:id="@+id/MRVTGTTaskGroupId"
+        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupId"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -23,7 +23,7 @@
         android:text="ID" />
 
     <TextView
-        android:id="@+id/MRVTGTTaskGroupName"
+        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
@@ -31,7 +31,7 @@
         android:text="Task Group Name" />
 
     <ImageButton
-        android:id="@+id/MRVTGTTaskGroupDetails"
+        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupDetails"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

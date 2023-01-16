@@ -23,120 +23,120 @@
             android:id="@+id/action_managerView_to_loginView"
             app:destination="@id/loginView" />
         <action
-            android:id="@+id/action_managerView_to_MVEVAddEmployeeView"
-            app:destination="@id/MVEVAddEmployeeView" />
+            android:id="@+id/action_managerView_to_ManView_EmpView_AddEmployeeView"
+            app:destination="@id/ManView_EmpView_AddEmployeeView" />
         <action
-            android:id="@+id/action_managerView_to_MVTGVAddTaskGroupView"
-            app:destination="@id/MVTGVAddTaskGroupView" />
+            android:id="@+id/action_managerView_to_ManView_TaskGroView_AddTaskGroupView"
+            app:destination="@id/ManView_TaskGroView_AddTaskGroupView" />
         <action
-            android:id="@+id/action_managerView_to_MVTGVDetailsView"
-            app:destination="@id/MVTGVDetailsView" />
+            android:id="@+id/action_managerView_to_ManView_TaskGroView_DetailsView"
+            app:destination="@id/ManView_TaskGroView_DetailsView" />
         <action
-            android:id="@+id/action_managerView_to_MVEVDetailsView"
-            app:destination="@id/MVEVDetailsView" />
+            android:id="@+id/action_managerView_to_ManView_EmpView_DetailsView"
+            app:destination="@id/ManView_EmpView_DetailsView" />
     </fragment>
     <fragment
-        android:id="@+id/MVEmployeesView"
-        android:name="com.example.whowherewhen.MVEmployeesView"
-        android:label="fragment_m_v_users_view"
-        tools:layout="@layout/fragment_m_v_employees_view" />
+        android:id="@+id/ManView_EmployeesView"
+        android:name="com.example.whowherewhen.ManView_EmployeesView"
+        android:label="fragment_man_view_users_view"
+        tools:layout="@layout/fragment_man_view_employees_view" />
     <fragment
-        android:id="@+id/MVTaskGroupsView"
-        android:name="com.example.whowherewhen.MVTaskGroupsView"
-        android:label="fragment_m_v_task_groups_view"
-        tools:layout="@layout/fragment_m_v_task_groups_view" />
+        android:id="@+id/ManView_TaskGroupsView"
+        android:name="com.example.whowherewhen.ManView_TaskGroupsView"
+        android:label="fragment_man_view_task_groups_view"
+        tools:layout="@layout/fragment_man_view_task_groups_view" />
     <fragment
-        android:id="@+id/MVEVAddEmployeeView"
-        android:name="com.example.whowherewhen.MVEVAddEmployeeView"
-        android:label="fragment_m_v_u_v_add_user_view"
-        tools:layout="@layout/fragment_m_v_e_v_add_employee_view" >
+        android:id="@+id/ManView_EmpView_AddEmployeeView"
+        android:name="com.example.whowherewhen.ManView_EmpView_AddEmployeeView"
+        android:label="fragment_man_view_emp_view_add_employee_view"
+        tools:layout="@layout/fragment_man_view_emp_view_add_employee_view" >
         <action
-            android:id="@+id/action_MVEVAddEmployeeView_to_managerView"
+            android:id="@+id/action_ManView_EmpView_AddEmployeeView_to_managerView"
             app:destination="@id/managerView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVAddTaskGroupView"
-        android:name="com.example.whowherewhen.MVTGVAddTaskGroupView"
-        android:label="fragment_m_v_t_g_v_add_task_group_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_add_task_group_view" >
+        android:id="@+id/ManView_TaskGroView_AddTaskGroupView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_AddTaskGroupView"
+        android:label="fragment_man_view_task_gro_view_add_task_group_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_add_task_group_view" >
         <action
-            android:id="@+id/action_MVTGVAddTaskGroupView_to_managerView"
+            android:id="@+id/action_ManView_TaskGroView_AddTaskGroupView_to_managerView"
             app:destination="@id/managerView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVDetailsView"
-        android:name="com.example.whowherewhen.MVTGVDetailsView"
-        android:label="fragment_m_v_t_g_v_details_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_details_view" >
+        android:id="@+id/ManView_TaskGroView_DetailsView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetailsView"
+        android:label="fragment_man_view_task_gro_view_details_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_details_view" >
         <action
-            android:id="@+id/action_MVTGVDetailsView_to_managerView"
+            android:id="@+id/action_ManView_TaskGroView_DetailsView_to_managerView"
             app:destination="@id/managerView" />
         <action
-            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVEVAddEmployeeView"
-            app:destination="@id/MVTGVDVEVAddEmployeeView" />
+            android:id="@+id/action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_EmpView_AddEmployeeView"
+            app:destination="@id/ManView_TaskGroView_DetView_EmpView_AddEmployeeView" />
         <action
-            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVTVAddTaskView"
-            app:destination="@id/MVTGVDVTVAddTaskView" />
+            android:id="@+id/action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_TaskView_AddTaskView"
+            app:destination="@id/ManView_TaskGroView_DetView_TaskView_AddTaskView" />
         <action
-            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVTVTimeView"
-            app:destination="@id/MVTGVDVTVTimeView" />
+            android:id="@+id/action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_TaskView_TimeView"
+            app:destination="@id/ManView_TaskGroView_DetView_TaskView_TimeView" />
         <action
-            android:id="@+id/action_MVTGVDetailsView_to_MVTGVDVEVTimeView"
-            app:destination="@id/MVTGVDVEVTimeView" />
+            android:id="@+id/action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_EmpView_TimeView"
+            app:destination="@id/ManView_TaskGroView_DetView_EmpView_TimeView" />
     </fragment>
     <fragment
-        android:id="@+id/MVEVDetailsView"
-        android:name="com.example.whowherewhen.MVEVDetailsView"
-        android:label="fragment_m_v_u_v_details_view"
-        tools:layout="@layout/fragment_m_v_e_v_details_view" >
+        android:id="@+id/ManView_EmpView_DetailsView"
+        android:name="com.example.whowherewhen.ManView_EmpView_DetailsView"
+        android:label="fragment_man_view_emp_view_details_view"
+        tools:layout="@layout/fragment_man_view_emp_view_details_view" >
         <action
-            android:id="@+id/action_MVEVDetailsView_to_managerView"
+            android:id="@+id/action_ManView_EmpView_DetailsView_to_managerView"
             app:destination="@id/managerView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVDVEmployeesView"
-        android:name="com.example.whowherewhen.MVTGVDVEmployeesView"
-        android:label="fragment_m_v_t_g_v_d_v_employees_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_employees_view" />
+        android:id="@+id/ManView_TaskGroView_DetView_EmployeesView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_EmployeesView"
+        android:label="fragment_man_view_task_rog_view_det_view_employees_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_employees_view" />
     <fragment
-        android:id="@+id/MVTGVDVTasksView"
-        android:name="com.example.whowherewhen.MVTGVDVTasksView"
-        android:label="fragment_m_v_t_g_v_d_v_tasks_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_tasks_view" />
+        android:id="@+id/ManView_TaskGroView_DetView_TasksView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_TasksView"
+        android:label="fragment_man_view_task_gro_view_det_view_tasks_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_tasks_view" />
     <fragment
-        android:id="@+id/MVTGVDVEVAddEmployeeView"
-        android:name="com.example.whowherewhen.MVTGVDVEVAddEmployeeView"
-        android:label="fragment_m_v_t_g_v_d_v_e_v_add_employee_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_e_v_add_employee_view" >
+        android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmployeeView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_EmpView_AddEmployeeView"
+        android:label="fragment_man_view_task_gro_view_det_view_emp_view_add_employee_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_emp_view_add_employee_view" >
         <action
-            android:id="@+id/action_MVTGVDVEVAddEmployeeView_to_MVTGVDetailsView"
-            app:destination="@id/MVTGVDetailsView" />
+            android:id="@+id/action_ManView_TaskGroView_DetView_EmpView_AddEmployeeView_to_ManView_TaskGroView_DetailsView"
+            app:destination="@id/ManView_TaskGroView_DetailsView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVDVTVAddTaskView"
-        android:name="com.example.whowherewhen.MVTGVDVTVAddTaskView"
-        android:label="fragment_m_v_t_g_v_d_v_t_v_add_task_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_t_v_add_task_view" >
+        android:id="@+id/ManView_TaskGroView_DetView_TaskView_AddTaskView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_TaskView_AddTaskView"
+        android:label="fragment_man_view_task_gro_view_det_view_task_view_add_task_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_task_view_add_task_view" >
         <action
-            android:id="@+id/action_MVTGVDVTVAddTaskView_to_MVTGVDetailsView"
-            app:destination="@id/MVTGVDetailsView" />
+            android:id="@+id/action_ManView_TaskGroView_DetView_TaskView_AddTaskView_to_ManView_TaskGroView_DetailsView"
+            app:destination="@id/ManView_TaskGroView_DetailsView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVDVTVTimeView"
-        android:name="com.example.whowherewhen.MVTGVDVTVTimeView"
-        android:label="fragment_m_v_t_g_v_d_v_t_v_time_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_t_v_time_view" >
+        android:id="@+id/ManView_TaskGroView_DetView_TaskView_TimeView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_TaskView_TimeView"
+        android:label="fragment_man_view_task_gro_view_det_view_task_view_time_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_task_view_time_view" >
         <action
-            android:id="@+id/action_MVTGVDVTVTimeView_to_MVTGVDetailsView"
-            app:destination="@id/MVTGVDetailsView" />
+            android:id="@+id/action_ManView_TaskGroView_DetView_TaskView_TimeView_to_ManView_TaskGroView_DetailsView"
+            app:destination="@id/ManView_TaskGroView_DetailsView" />
     </fragment>
     <fragment
-        android:id="@+id/MVTGVDVEVTimeView"
-        android:name="com.example.whowherewhen.MVTGVDVEVTimeView"
-        android:label="fragment_m_v_t_g_v_d_v_e_v_time_view"
-        tools:layout="@layout/fragment_m_v_t_g_v_d_v_e_v_time_view" >
+        android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView"
+        android:name="com.example.whowherewhen.ManView_TaskGroView_DetView_EmpView_TimeView"
+        android:label="fragment_man_view_task_gro_view_det_view_emp_view_time_view"
+        tools:layout="@layout/fragment_man_view_task_gro_view_det_view_emp_view_time_view" >
         <action
-            android:id="@+id/action_MVTGVDVEVTimeView_to_MVTGVDetailsView"
-            app:destination="@id/MVTGVDetailsView" />
+            android:id="@+id/action_ManView_TaskGroView_DetView_EmpView_TimeView_to_ManView_TaskGroView_DetailsView"
+            app:destination="@id/ManView_TaskGroView_DetailsView" />
     </fragment>
 </navigation>

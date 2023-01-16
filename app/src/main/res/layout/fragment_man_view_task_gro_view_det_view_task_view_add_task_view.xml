@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout12"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVTGVDVTVAddTaskView">
+    tools:context=".ManView_TaskGroView_DetView_TaskView_AddTaskView">
 
     <TextView
         android:id="@+id/textView3"
@@ -18,7 +18,7 @@
         android:text="Add Task" />
 
     <EditText
-        android:id="@+id/MVTGVDVTVATVNameInput"
+        android:id="@+id/ManView_TaskGroView_DetView_TaskView_AddTaskView_NameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -44,7 +44,7 @@
         style="?android:attr/buttonBarButtonStyle">
 
         <Button
-            android:id="@+id/MVTGVDVTVATVCancel"
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_AddTaskView_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,7 +52,7 @@
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/MVTGVDVTVATVConfirm"
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_AddTaskView_Confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

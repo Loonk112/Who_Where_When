@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageButton
-        android:id="@+id/ManRecView_EmpTemp_DeleteEmployee"
+        android:id="@+id/ManRecVie_EmpTemp2_DeleteEmployee"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
@@ -13,7 +13,7 @@
         app:srcCompat="@drawable/ic_baseline_remove_24" />
 
     <TextView
-        android:id="@+id/ManRecView_EmpTemp_EmployeeId"
+        android:id="@+id/ManRecVie_EmpTemp2_EmployeeId"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
@@ -21,37 +21,27 @@
         android:text="ID" />
 
     <TextView
-        android:id="@+id/ManRecView_EmpTemp_EmployeeName"
+        android:id="@+id/ManRecVie_EmpTemp2_EmployeeName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="7"
         android:gravity="center_vertical"
         android:text="Name" />
 
     <TextView
-        android:id="@+id/ManRecView_EmpTemp_EmployeeSurname"
+        android:id="@+id/ManRecVie_EmpTemp2_EmployeeSurname"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="8"
         android:gravity="center_vertical"
         android:text="Surname" />
 
-    <Button
-        android:id="@+id/ManRecView_EmpTemp_EmployeePerm"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:textSize="10sp"
-        android:gravity="center"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="Perm" />
-
     <ImageButton
-        android:id="@+id/ManRecView_EmpTemp_EmployeeDetails"
+        android:id="@+id/ManRecVie_EmpTemp2_EmployeeTime"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
         android:contentDescription="See employee details"
-        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+        app:srcCompat="@drawable/ic_baseline_access_time_24" />
 
 </LinearLayout>
