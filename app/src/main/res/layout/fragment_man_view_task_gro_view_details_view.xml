@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_DetailsView">
+    tools:context=".manager.taskgroup.details.ManView_TaskGroView_DetailsView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
         android:id="@+id/ManView_TaskGroView_DetView_BottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:menu="@menu/m_v_t_g_v_details_view_menu"
+        app:menu="@menu/man_view_task_gro_view_details_view_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

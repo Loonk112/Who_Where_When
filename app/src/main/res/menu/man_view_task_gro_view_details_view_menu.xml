@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Assigned Employees"
-        android:id="@+id/MVTGVDVMEmployees"
+        android:id="@+id/ManView_TaskGroView_DetView_Menu_Employees"
         android:icon="@drawable/ic_baseline_groups_24" />
     <item android:title="Group's Tasks"
-        android:id="@+id/MVTGVDVMTasks"
+        android:id="@+id/ManView_TaskGroView_DetView_Menu_Tasks"
         android:icon="@drawable/ic_baseline_playlist_add_24" />
 </menu>

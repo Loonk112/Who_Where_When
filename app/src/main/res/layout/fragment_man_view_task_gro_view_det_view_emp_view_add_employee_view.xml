@@ -5,50 +5,53 @@
     android:id="@+id/frameLayout11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_DetView_EmpView_AddEmployeeView">
+    tools:context=".manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmpView_AddEmployeeView">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
         android:background="@color/teal_200"
-        android:text="Add Employee" />
+        android:gravity="center"
+        android:text="Add Employee"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <Spinner
+        android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/textView3"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"></LinearLayout>
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/teal_200"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/teal_200"
-        style="?android:attr/buttonBarButtonStyle">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/MVTGVDVEVAEVCancel"
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Cancel"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/MVTGVDVEVAEVConfirm"
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Confirm"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
             android:text="Confirm" />
     </LinearLayout>
 

@@ -14,6 +14,7 @@
 
     <TextView
         android:id="@+id/ManRecView_EmpTemp_EmployeeId"
+        android:background="@color/gray"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
@@ -30,6 +31,7 @@
 
     <TextView
         android:id="@+id/ManRecView_EmpTemp_EmployeeSurname"
+        android:background="@color/gray"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"

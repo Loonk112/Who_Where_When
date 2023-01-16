@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.example.whowherewhen.manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmployeesView
+import com.example.whowherewhen.R
+import com.example.whowherewhen.manager.taskgroup.details.task.ManView_TaskGroView_DetView_TasksView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -34,10 +37,10 @@ class ManView_TaskGroView_DetailsView : Fragment() {
         val bottomNav = view.findViewById<BottomNavigationView>(R.id.ManView_TaskGroView_DetView_BottomNav)
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.MVTGVDVMEmployees -> {
+                R.id.ManView_TaskGroView_DetView_Menu_Employees -> {
                     loadFragment(ManView_TaskGroView_DetView_EmployeesView())
                 }
-                R.id.MVTGVDVMTasks -> {
+                R.id.ManView_TaskGroView_DetView_Menu_Tasks -> {
                     loadFragment(ManView_TaskGroView_DetView_TasksView())
                 }
             }

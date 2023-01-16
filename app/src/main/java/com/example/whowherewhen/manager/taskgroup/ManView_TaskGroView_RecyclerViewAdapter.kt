@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.whowherewhen.DBHelper
+import com.example.whowherewhen.Keeper
+import com.example.whowherewhen.R
+import com.example.whowherewhen.data.TaskGroupData
 
 class ManView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<ManView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {

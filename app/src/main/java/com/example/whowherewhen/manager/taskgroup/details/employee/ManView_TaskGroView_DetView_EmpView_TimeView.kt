@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup.details.employee
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.example.whowherewhen.R
 
 
 class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
@@ -23,7 +24,7 @@ class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<ImageButton>(R.id.MVTGVDVEVTVReturn)
+        val returnButton = view.findViewById<ImageButton>(R.id.ManView_TaskGroView_DetView_EmpView_TimeView_Return)
         returnButton.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_EmpView_TimeView_to_ManView_TaskGroView_DetailsView)
         }

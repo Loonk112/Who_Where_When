@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout9"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_DetView_EmployeesView">
+    tools:context=".manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmployeesView">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -51,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        tools:listitem="@layout/manager_recycler_view_employee_template_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

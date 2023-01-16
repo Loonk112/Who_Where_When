@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_EmpView_AddEmployeeView">
+    tools:context=".manager.employee.ManView_EmpView_AddEmployeeView">
 
     <TextView
         android:id="@+id/textView2"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3">
 
         <EditText
-            android:id="@+id/MVEVAEVNameInput"
+            android:id="@+id/ManView_EmpView_AddEmpView_NameInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -35,7 +35,7 @@
             android:hint="Name" />
 
         <EditText
-            android:id="@+id/MVEVAEVSurnameInput"
+            android:id="@+id/ManView_EmpView_AddEmpView_SurnameInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -44,7 +44,7 @@
             android:hint="Surname" />
 
         <RadioGroup
-            android:id="@+id/MVEVAEVRadioGroup"
+            android:id="@+id/ManView_EmpView_AddEmpView_RadioGroup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -52,14 +52,14 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/MVEVAEVRadioManager"
+                android:id="@+id/ManView_EmpView_AddEmpView_RadioManager"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="Manager" />
 
             <RadioButton
-                android:id="@+id/MVEVAEVRadioEmployee"
+                android:id="@+id/ManView_EmpView_AddEmpView_RadioEmployee"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -68,7 +68,7 @@
         </RadioGroup>
 
         <EditText
-            android:id="@+id/MVEVAEVLoginInput"
+            android:id="@+id/ManView_EmpView_AddEmpView_LoginInput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -82,7 +82,7 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/MVEVAEVPasswordOneInput"
+                android:id="@+id/ManView_EmpView_AddEmpView_PasswordOneInput"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -91,7 +91,7 @@
                 android:hint="Password" />
 
             <EditText
-                android:id="@+id/MVEVAEVPasswordTwoInput"
+                android:id="@+id/ManView_EmpView_AddEmpView_PasswordTwoInput"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -113,7 +113,7 @@
         style="?android:attr/buttonBarButtonStyle">
 
         <Button
-            android:id="@+id/MVEVAEVCancel"
+            android:id="@+id/ManView_EmpView_AddEmpView_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
-            android:id="@+id/MVEVAEVConfirm"
+            android:id="@+id/ManView_EmpView_AddEmpView_Confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

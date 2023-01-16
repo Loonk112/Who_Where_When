@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.employee
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.whowherewhen.DBHelper
+import com.example.whowherewhen.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_EmployeesView : Fragment() {
@@ -18,7 +20,7 @@ class ManView_EmployeesView : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_man_view_employees_view, container, false)
-        val recycler = view.findViewById<RecyclerView>(R.id.MVEVRecyclerView)
+        val recycler = view.findViewById<RecyclerView>(R.id.ManView_EmpView_RecyclerView)
         recycler.layoutManager = LinearLayoutManager(activity)
 
         val db = DBHelper(requireContext(), null)
@@ -32,7 +34,7 @@ class ManView_EmployeesView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newUser = view.findViewById<FloatingActionButton>(R.id.MVEVFloatingActionButton)
+        val newUser = view.findViewById<FloatingActionButton>(R.id.ManView_EmpView_FloatingActionButton)
         newUser.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_managerView_to_ManView_EmpView_AddEmployeeView)
         }

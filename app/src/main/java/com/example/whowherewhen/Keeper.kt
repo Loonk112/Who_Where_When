@@ -34,11 +34,20 @@ class Keeper {
         return userId
     }
 
+    fun setGroupEmployeeID (id: Int) {
+        userId = id
+    }
+
+    fun getGroupEmployeeID (): Int {
+        return userId
+    }
+
 
     companion object {
         var userId: Int = 0
         var taskGroupId: Int = 0
         var taskId: Int = 0
         var employeeId: Int = 0
+        var groupEmployeeId: Int = 0
     }
 }

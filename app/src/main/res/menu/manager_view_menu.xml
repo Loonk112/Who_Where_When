@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Users"
-        android:id="@+id/MVMUsers"
+        android:id="@+id/ManView_Menu_Users"
         android:icon="@drawable/ic_baseline_groups_24"/>
     <item android:title="Task Groups"
-        android:id="@+id/MVMTaskGroups"
+        android:id="@+id/ManView_Menu_TaskGroups"
         android:icon="@drawable/ic_baseline_task_24"/>
 </menu>

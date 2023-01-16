@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_EmpView_DetailsView">
+    tools:context=".manager.employee.details.ManView_EmpView_DetailsView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/MVEVDVReturn"
+            android:id="@+id/ManView_EmpView_DetView_Return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Return to manager's view"
@@ -39,7 +39,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/MVEVDVContainer"
+        android:id="@+id/ManView_EmpView_DetView_Container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
@@ -51,10 +51,10 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/MVEVDVBottomNav"
+        android:id="@+id/ManView_EmpView_DetView_BottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:menu="@menu/m_v_e_v_details_view_menu"
+        app:menu="@menu/man_view_emp_view_details_view_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.whowherewhen.DBHelper
+import com.example.whowherewhen.R
 
 
 class ManView_TaskGroView_AddTaskGroupView : Fragment() {
@@ -25,14 +27,14 @@ class ManView_TaskGroView_AddTaskGroupView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cancel = view.findViewById<Button>(R.id.MVTGVATGVCancel)
+        val cancel = view.findViewById<Button>(R.id.ManView_TaskGroView_AddTaskGroView_Cancel)
         cancel.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_AddTaskGroupView_to_managerView)
         }
 
-        val nameInput = view.findViewById<EditText>(R.id.MVTGVATGVTaskGroupNameInput)
+        val nameInput = view.findViewById<EditText>(R.id.ManView_TaskGroView_AddTaskGroView_TaskGroupNameInput)
 
-        val confirmButton = view.findViewById<Button>(R.id.MVTGVATGVConfirm)
+        val confirmButton = view.findViewById<Button>(R.id.ManView_TaskGroView_AddTaskGroView_Confirm)
         confirmButton.setOnClickListener {
             if (nameInput.text.isEmpty()) {
                 Toast.makeText(context, "Name must be filled to add Task Group", Toast.LENGTH_SHORT).show()

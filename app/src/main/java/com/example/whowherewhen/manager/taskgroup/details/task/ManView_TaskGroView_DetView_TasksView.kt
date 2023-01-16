@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup.details.task
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.whowherewhen.DBHelper
+import com.example.whowherewhen.Keeper
+import com.example.whowherewhen.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_TaskGroView_DetView_TasksView : Fragment() {
@@ -34,7 +37,7 @@ class ManView_TaskGroView_DetView_TasksView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newTask = view.findViewById<FloatingActionButton>(R.id.ManView_TaskGroView_DetView_TakView_FloatingActionButton)
+        val newTask = view.findViewById<FloatingActionButton>(R.id.ManView_TaskGroView_DetView_TaskView_FloatingActionButton)
         newTask.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_TaskView_AddTaskView)
         }

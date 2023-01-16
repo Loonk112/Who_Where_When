@@ -1,4 +1,4 @@
-package com.example.whowherewhen
+package com.example.whowherewhen.manager.taskgroup.details.task
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.example.whowherewhen.DBHelper
+import com.example.whowherewhen.Keeper
+import com.example.whowherewhen.R
 
 
 class ManView_TaskGroView_DetView_TaskView_AddTaskView : Fragment() {

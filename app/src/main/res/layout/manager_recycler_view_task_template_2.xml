@@ -24,6 +24,7 @@
 
     <TextView
         android:id="@+id/ManRecView_TaskTemp2_TaskName"
+        android:background="@color/gray"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="5"

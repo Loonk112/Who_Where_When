@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout14"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_DetView_EmpView_TimeView">
+    tools:context=".manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmpView_TimeView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/MVTGVDVEVTVReturn"
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView_Return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -39,7 +39,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MVTGVDVEVTVRecyclerView"
+        android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"

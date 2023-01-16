@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout13"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_DetView_TaskView_TimeView">
+    tools:context=".manager.taskgroup.details.task.ManView_TaskGroView_DetView_TaskView_TimeView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

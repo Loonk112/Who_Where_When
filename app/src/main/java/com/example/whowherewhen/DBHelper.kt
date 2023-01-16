@@ -4,6 +4,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.whowherewhen.data.EmployeeData
+import com.example.whowherewhen.data.ExtendedGroupEmployeeData
+import com.example.whowherewhen.data.TaskData
+import com.example.whowherewhen.data.TaskGroupData
+
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
@@ -109,6 +114,26 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         cursor.close()
 
         return id
+    }
+
+    fun getUnconnectedEmployees(id: Int): ArrayList<EmployeeData> {
+        val db = this.readableDatabase
+        val sql = "SELECT ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL, $EMPLOYEE_NAME_COl, $EMPLOYEE_SURNAME_COL, $EMPLOYEE_PERMISSION_COL FROM $EMPLOYEE_TABLE_NAME EXCEPT SELECT ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL, $EMPLOYEE_NAME_COl, $EMPLOYEE_SURNAME_COL, $EMPLOYEE_PERMISSION_COL FROM $EMPLOYEE_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL IS $id"
+        val storeEmployees = ArrayList<EmployeeData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val surname = cursor.getString(2)
+                val status = cursor.getString(3)
+                storeEmployees.add(EmployeeData(id, name, surname, status))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeEmployees
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////Passwords
 
@@ -220,6 +245,48 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Group - Worker
 
+    fun addGroupWorker(employeeId: Int, groupId: Int){
+        val values = ContentValues()
+        values.put(GROUP_WORKER_EMPLOYEE_COL, employeeId)
+        values.put(GROUP_WORKER_GROUP_COL, groupId)
+
+        val db = this.writableDatabase
+
+        db.insert(GROUP_WORKER_TABLE_NAME, null, values)
+
+        db.close()
+    }
+
+    fun getTaskGroupEmployees(id: Int): ArrayList<ExtendedGroupEmployeeData> {
+        val db = this.readableDatabase
+        val sql = "SELECT ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_ID_COL, ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL, ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL, $EMPLOYEE_NAME_COl, $EMPLOYEE_SURNAME_COL, $EMPLOYEE_PERMISSION_COL FROM $EMPLOYEE_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL IS $id"
+        val storeEmployees = ArrayList<ExtendedGroupEmployeeData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val gro_id = cursor.getString(1).toInt()
+                val emp_id = cursor.getString(2).toInt()
+                val name = cursor.getString(3)
+                val surname = cursor.getString(4)
+                val status = cursor.getString(5)
+                storeEmployees.add(ExtendedGroupEmployeeData(id, gro_id, emp_id, name, surname, status))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeEmployees
+    }
+
+    fun deleteGroupWorker(id: Int) {
+        val db = this.writableDatabase
+        db.delete(
+            GROUP_WORKER_TABLE_NAME,
+            "$GROUP_WORKER_ID_COL = ?",
+            arrayOf(id.toString())
+        )
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Time table
 

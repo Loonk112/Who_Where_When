@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManView_TaskGroView_AddTaskGroupView">
+    tools:context=".manager.taskgroup.ManView_TaskGroView_AddTaskGroupView">
 
     <TextView
         android:id="@+id/textView3"
@@ -19,7 +19,7 @@
 
 
     <EditText
-        android:id="@+id/MVTGVATGVTaskGroupNameInput"
+        android:id="@+id/ManView_TaskGroView_AddTaskGroView_TaskGroupNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,7 +45,7 @@
         style="?android:attr/buttonBarButtonStyle">
 
         <Button
-            android:id="@+id/MVTGVATGVCancel"
+            android:id="@+id/ManView_TaskGroView_AddTaskGroView_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
-            android:id="@+id/MVTGVATGVConfirm"
+            android:id="@+id/ManView_TaskGroView_AddTaskGroView_Confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
