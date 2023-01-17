@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
@@ -61,10 +62,10 @@ class ManView_EmpView_RecyclerViewAdapter (private val employeeList: ArrayList<E
             notifyDataSetChanged()
         }
 
-        if ((keeper.getUserID() == employeeList[position].id) or (employeeList[position].id == 0)) {
+        if ((keeper.getUserID() == employeeList[position].id)) {
             holder.deleteBtn.isClickable = false
             holder.deleteBtn.isEnabled = false
-
+            Toast.makeText(holder.view.context, "${keeper.getUserID()}", Toast.LENGTH_SHORT).show()
             holder.permBtn.isClickable = false
             holder.permBtn.isEnabled = false
         }

@@ -26,6 +26,8 @@ class LoginView : Fragment() {
         val confirmLogin = view.findViewById<ImageButton>(R.id.LVConfirm)
         confirmLogin.setOnClickListener {
             //TODO
+            val keeper = Keeper()
+            keeper.setUserID(0)
 
             Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
         }

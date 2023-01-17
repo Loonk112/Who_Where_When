@@ -35,11 +35,11 @@ class Keeper {
     }
 
     fun setGroupEmployeeID (id: Int) {
-        userId = id
+        groupEmployeeId = id
     }
 
     fun getGroupEmployeeID (): Int {
-        return userId
+        return groupEmployeeId
     }
 
 
