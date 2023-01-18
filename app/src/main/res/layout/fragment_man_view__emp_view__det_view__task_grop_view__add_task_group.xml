@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout11"
+    android:id="@+id/frameLayout17"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmpView_AddEmployeeView">
+    tools:context=".manager.employee.details.taskgroup.ManView_EmpView_DetView_TaskGropView_AddTaskGroup">
 
     <TextView
         android:id="@+id/textView3"
@@ -13,16 +13,16 @@
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
         android:gravity="center"
-        android:text="Add Employee"
+        android:text="Add Task Group"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Spinner"
+        android:id="@+id/ManView_EmpView_DetView_TaskGroView_AddTaskGro_Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/manager_spinner_task_group_adapter_template"
         android:layout_marginHorizontal="20dp"
-        tools:listitem="@layout/manager_spinner_employee_adapter_template"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Cancel"
+            android:id="@+id/ManView_EmpView_DetView_TaskGroView_AddTaskGro_Cancel"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/ManView_TaskGroView_DetView_EmpView_AddEmpView_Confirm"
+            android:id="@+id/ManView_EmpView_DetView_TaskGroView_AddTaskGro_Confirm"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

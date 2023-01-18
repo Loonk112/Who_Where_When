@@ -4,10 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.whowherewhen.data.EmployeeData
-import com.example.whowherewhen.data.ExtendedGroupEmployeeData
-import com.example.whowherewhen.data.TaskData
-import com.example.whowherewhen.data.TaskGroupData
+import com.example.whowherewhen.data.*
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -73,6 +70,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
             arrayOf(id.toString())
         )
     }
+
     fun getAllEmployees(): ArrayList<EmployeeData> {
 
         val db = this.readableDatabase
@@ -92,6 +90,27 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         cursor.close()
 
         return storeEmployees
+    }
+
+    fun getEmployee(id: Int): EmployeeData {
+
+        val db = this.readableDatabase
+        val sql = "SELECT * FROM $EMPLOYEE_TABLE_NAME WHERE $EMPLOYEE_ID_COL = $id"
+        lateinit var storeEmployee: EmployeeData
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val surname = cursor.getString(2)
+                val perms = cursor.getString(3)
+                storeEmployee = EmployeeData(id, name, surname, perms)
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeEmployee
     }
 
     fun changeEmployeePerms(id: Int, perms: String) {
@@ -152,6 +171,50 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
     }
 
+    fun getLogin(id: Int): String {
+
+        val db = this.readableDatabase
+        val sql = "SELECT $PASS_LOGIN_COl FROM $PASS_TABLE_NAME WHERE $PASS_EMPLOYEE_COL = $id"
+        lateinit var storeLogin: String
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                storeLogin = cursor.getString(0)
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeLogin
+    }
+
+    fun verifyPassword(id: Int, pas: String): Boolean {
+
+        val db = this.readableDatabase
+        val sql = "SELECT $PASS_BODY_COl FROM $PASS_TABLE_NAME WHERE $PASS_EMPLOYEE_COL = $id"
+        lateinit var pass: String
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                pass = cursor.getString(0)
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        if(pass == pas) {
+            return true
+        }
+        return false
+    }
+
+    fun changePassword(id: Int, pas: String, newPas: String) {
+
+        val db = this.readableDatabase
+        val sql = "UPDATE $PASS_TABLE_NAME SET $PASS_BODY_COl = '$newPas' WHERE $PASS_EMPLOYEE_COL = $id AND $PASS_BODY_COl = '$pas'"
+        db.execSQL(sql)
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////Task Groups
 
     fun addTaskGroup(name : String){
@@ -178,6 +241,44 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val db = this.readableDatabase
         val sql = "SELECT * FROM $TASK_GROUP_TABLE_NAME"
+        val storeTaskGroups = ArrayList<TaskGroupData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                storeTaskGroups.add(TaskGroupData(id, name))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeTaskGroups
+    }
+
+    fun getEmployeesTaskGroups(id: Int): ArrayList<TaskGroupData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_ID_COL, $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL = $id"
+        val storeTaskGroups = ArrayList<TaskGroupData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                storeTaskGroups.add(TaskGroupData(id, name))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeTaskGroups
+    }
+
+    fun getUnconnectedTaskGroups(id: Int): ArrayList<TaskGroupData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT * FROM $TASK_GROUP_TABLE_NAME EXCEPT SELECT ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL, $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL IS $id"
         val storeTaskGroups = ArrayList<TaskGroupData>()
         val cursor = db.rawQuery(sql, null)
         if (cursor.moveToFirst()) {

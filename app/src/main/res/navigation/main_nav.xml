@@ -92,6 +92,9 @@
         <action
             android:id="@+id/action_ManView_EmpView_DetailsView_to_managerView"
             app:destination="@id/managerView" />
+        <action
+            android:id="@+id/action_ManView_EmpView_DetailsView_to_manView_EmpView_DetView_TaskGropView_AddTaskGroup"
+            app:destination="@id/manView_EmpView_DetView_TaskGropView_AddTaskGroup" />
     </fragment>
     <fragment
         android:id="@+id/ManView_TaskGroView_DetView_EmployeesView"
@@ -138,5 +141,24 @@
         <action
             android:id="@+id/action_ManView_TaskGroView_DetView_EmpView_TimeView_to_ManView_TaskGroView_DetailsView"
             app:destination="@id/ManView_TaskGroView_DetailsView" />
+    </fragment>
+    <fragment
+        android:id="@+id/manView_EmpView_DetView_CredentialsChange"
+        android:name="com.example.whowherewhen.manager.employee.details.ManView_EmpView_DetView_CredentialsChange"
+        android:label="fragment_man_view__emp_view__det_view__credentials_change"
+        tools:layout="@layout/fragment_man_view__emp_view__det_view__credentials_change" />
+    <fragment
+        android:id="@+id/manView_EmpView_DetView_TaskGroupView"
+        android:name="com.example.whowherewhen.manager.employee.details.taskgroup.ManView_EmpView_DetView_TaskGroupView"
+        android:label="fragment_man_view__emp_view__det_view__task_group_view"
+        tools:layout="@layout/fragment_man_view__emp_view__det_view__task_group_view" />
+    <fragment
+        android:id="@+id/manView_EmpView_DetView_TaskGropView_AddTaskGroup"
+        android:name="com.example.whowherewhen.manager.employee.details.taskgroup.ManView_EmpView_DetView_TaskGropView_AddTaskGroup"
+        android:label="fragment_man_view__emp_view__det_view__task_grop_view__add_task_group"
+        tools:layout="@layout/fragment_man_view__emp_view__det_view__task_grop_view__add_task_group" >
+        <action
+            android:id="@+id/action_manView_EmpView_DetView_TaskGropView_AddTaskGroup_to_ManView_EmpView_DetailsView"
+            app:destination="@id/ManView_EmpView_DetailsView" />
     </fragment>
 </navigation>

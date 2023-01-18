@@ -4,4 +4,8 @@
     <item android:title="Assigned Task Groups"
         android:id="@+id/ManView_EmpView_DetView_Menu_TaskGroups"
         android:icon="@drawable/ic_baseline_task_24"/>
+
+    <item android:title="Credentials"
+        android:id="@+id/ManView_EmpView_DetView_Menu_Credentials"
+        android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>

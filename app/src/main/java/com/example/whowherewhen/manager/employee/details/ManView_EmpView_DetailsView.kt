@@ -8,6 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
 import com.example.whowherewhen.R
+import com.example.whowherewhen.manager.employee.ManView_EmployeesView
+import com.example.whowherewhen.manager.employee.details.taskgroup.ManView_EmpView_DetView_TaskGroupView
+import com.example.whowherewhen.manager.taskgroup.ManView_TaskGroupsView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class ManView_EmpView_DetailsView : Fragment() {
@@ -28,12 +33,25 @@ class ManView_EmpView_DetailsView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_ManView_EmpView_DetailsView_to_managerView)
         }
 
-        //TODO
+        loadFragment(ManView_EmpView_DetView_TaskGroupView())
+
+        val bNav = view.findViewById<BottomNavigationView>(R.id.ManView_EmpView_DetView_BottomNav)
+        bNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.ManView_EmpView_DetView_Menu_Credentials -> {
+                    loadFragment(ManView_EmpView_DetView_CredentialsChange())
+                }
+                R.id.ManView_EmpView_DetView_Menu_TaskGroups -> {
+                    loadFragment(ManView_EmpView_DetView_TaskGroupView())
+                }
+            }
+            true
+        }
     }
 
     private  fun loadFragment(fragment: Fragment){
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.ManView_Container,fragment)
+        transaction.replace(R.id.ManView_EmpView_DetView_Container,fragment)
         transaction.commit()
     }
 }
