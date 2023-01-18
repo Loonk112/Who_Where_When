@@ -22,6 +22,9 @@
             android:layout_weight="2" />
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_TextViewBtn_ID"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -29,12 +32,18 @@
             android:text="ID" />
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_TextViewBtn_Name"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:text="Task Name" />
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_TextViewBtn_Status"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"

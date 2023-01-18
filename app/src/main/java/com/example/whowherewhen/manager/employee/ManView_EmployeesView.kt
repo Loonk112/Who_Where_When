@@ -5,14 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.EmployeeData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_EmployeesView : Fragment() {
+
+    lateinit var data: ArrayList<EmployeeData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +28,7 @@ class ManView_EmployeesView : Fragment() {
         recycler.layoutManager = LinearLayoutManager(activity)
 
         val db = DBHelper(requireContext(), null)
-        val data = db.getAllEmployees()
+        data = db.getAllEmployees()
 
         recycler.adapter = ManView_EmpView_RecyclerViewAdapter(data)
 
@@ -39,7 +43,28 @@ class ManView_EmployeesView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_managerView_to_ManView_EmpView_AddEmployeeView)
         }
 
-        //TODO
+        val recycler = view.findViewById<RecyclerView>(R.id.ManView_EmpView_RecyclerView)
+
+        val sortID = view.findViewById<TextView>(R.id.ManView_EmpView_TextViewBtn_ID)
+        sortID.setOnClickListener {
+            data.sortBy { it.id.toString().uppercase() }
+            recycler.adapter = ManView_EmpView_RecyclerViewAdapter(data)
+        }
+        val sortName = view.findViewById<TextView>(R.id.ManView_EmpView_TextViewBtn_Name)
+        sortName.setOnClickListener {
+            data.sortBy { it.name.toString().uppercase() }
+            recycler.adapter = ManView_EmpView_RecyclerViewAdapter(data)
+        }
+        val sortSurname = view.findViewById<TextView>(R.id.ManView_EmpView_TextViewBtn_Surname)
+        sortSurname.setOnClickListener {
+            data.sortBy { it.surname.toString().uppercase() }
+            recycler.adapter = ManView_EmpView_RecyclerViewAdapter(data)
+        }
+        val sortPerm = view.findViewById<TextView>(R.id.ManView_EmpView_TextViewBtn_Perm)
+        sortPerm.setOnClickListener {
+            data.sortBy { it.perms.toString().uppercase() }
+            recycler.adapter = ManView_EmpView_RecyclerViewAdapter(data)
+        }
 
     }
 }

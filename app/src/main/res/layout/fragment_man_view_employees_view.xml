@@ -21,6 +21,9 @@
             android:layout_weight="3" />
 
         <TextView
+            android:id="@+id/ManView_EmpView_TextViewBtn_ID"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
@@ -28,18 +31,27 @@
             android:text="ID" />
 
         <TextView
+            android:id="@+id/ManView_EmpView_TextViewBtn_Name"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:text="Name" />
 
         <TextView
+            android:id="@+id/ManView_EmpView_TextViewBtn_Surname"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:text="Surname" />
 
         <TextView
+            android:id="@+id/ManView_EmpView_TextViewBtn_Perm"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"

@@ -36,7 +36,7 @@ class ManagerView : Fragment() {
         val bNav = view.findViewById<BottomNavigationView>(R.id.ManView_BottomNav)
         bNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.ManView_Menu_Users -> {
+                R.id.ManView_Menu_Employees -> {
                     loadFragment(ManView_EmployeesView())
                 }
                 R.id.ManView_Menu_TaskGroups -> {

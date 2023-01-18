@@ -21,6 +21,9 @@
             android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_TextViewBtn_ID"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -28,6 +31,9 @@
             android:text="ID" />
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_TextViewBtn_Name"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"

@@ -5,15 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.TaskData
+import com.example.whowherewhen.manager.employee.ManView_EmpView_RecyclerViewAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_TaskGroView_DetView_TasksView : Fragment() {
+
+    lateinit var data: ArrayList<TaskData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +30,7 @@ class ManView_TaskGroView_DetView_TasksView : Fragment() {
         val keeper = Keeper()
 
         val db = DBHelper(requireContext(), null)
-        val data = db.getTaskGroupTasks(keeper.getTaskGroupId())
+        data = db.getTaskGroupTasks(keeper.getTaskGroupId())
 
         val recycler = view.findViewById<RecyclerView>(R.id.ManView_TaskGroView_DetView_TakView_RecyclerView)
         recycler.layoutManager = LinearLayoutManager(activity)
@@ -40,6 +45,24 @@ class ManView_TaskGroView_DetView_TasksView : Fragment() {
         val newTask = view.findViewById<FloatingActionButton>(R.id.ManView_TaskGroView_DetView_TaskView_FloatingActionButton)
         newTask.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_TaskView_AddTaskView)
+        }
+
+        val recycler = view.findViewById<RecyclerView>(R.id.ManView_TaskGroView_DetView_TakView_RecyclerView)
+
+        val sortID = view.findViewById<TextView>(R.id.ManView_TaskGroView_DetView_TaskView_TextViewBtn_ID)
+        sortID.setOnClickListener {
+            data.sortBy { it.id.toString().uppercase() }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter(data)
+        }
+        val sortName = view.findViewById<TextView>(R.id.ManView_TaskGroView_DetView_TaskView_TextViewBtn_Name)
+        sortName.setOnClickListener {
+            data.sortBy { it.name.toString().uppercase() }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter(data)
+        }
+        val sortStatus = view.findViewById<TextView>(R.id.ManView_TaskGroView_DetView_TaskView_TextViewBtn_Status)
+        sortStatus.setOnClickListener {
+            data.sortBy { it.status.toString().uppercase() }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter(data)
         }
     }
 }
