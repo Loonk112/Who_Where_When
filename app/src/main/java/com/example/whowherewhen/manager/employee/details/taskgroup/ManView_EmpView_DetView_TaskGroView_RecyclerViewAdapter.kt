@@ -16,7 +16,8 @@ class ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter (private val taskG
         val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_DeleteTaskGroup)!!
         val idView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupId)!!
         val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupName)!!
-        val timeBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_TaskGroupTime)!!
+        val timeView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupTime)!!
+        val detailsBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_TaskGroupDetails)!!
     }
 
 
@@ -37,11 +38,13 @@ class ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter (private val taskG
             notifyDataSetChanged()
         }
 
-        holder.timeBtn.setOnClickListener {
+        holder.detailsBtn.setOnClickListener {
             val keeper = Keeper()
             keeper.setTaskGroupId(taskGroupList[position].id)
-            //TODO:
+            //TODO: Navigate to tasks
         }
+
+        //TODO: holder.timeView.text = ...
     }
 
     override fun getItemCount(): Int {

@@ -215,6 +215,21 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.execSQL(sql)
     }
 
+    fun logIn(loginIn: String, pas: String): LoginData {
+        val db = this.readableDatabase
+        val sql = "SELECT $PASS_EMPLOYEE_COL FROM $PASS_TABLE_NAME WHERE '$loginIn' IS $PASS_LOGIN_COl AND '$pas' IS $PASS_BODY_COl"
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.count < 1) {
+            return LoginData(false, -1)
+        }
+        var id = 0
+        if (cursor.moveToFirst()) {
+            id = cursor.getString(0).toInt()
+        }
+        cursor.close()
+        return LoginData(true,id)
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////Task Groups
 
     fun addTaskGroup(name : String){
@@ -294,6 +309,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return storeTaskGroups
     }
 
+    //TODO: Add ExtendedTaskGroupData getter
+
     ////////////////////////////////////////////////////////////////////////////////////////////////Tasks
 
     fun addTaskToGroup(groupId: Int, name : String){
@@ -344,6 +361,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
+    //TODO: Add ExtendedTaskData getter
+
     ////////////////////////////////////////////////////////////////////////////////////////////////Group - Worker
 
     fun addGroupWorker(employeeId: Int, groupId: Int){
@@ -390,6 +409,12 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Time table
+
+    //TODO: Time Table items
+
+
+
+
 
     companion object{
 

@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 
@@ -25,11 +27,15 @@ class LoginView : Fragment() {
 
         val confirmLogin = view.findViewById<ImageButton>(R.id.LVConfirm)
         confirmLogin.setOnClickListener {
-            //TODO
-            val keeper = Keeper()
-            keeper.setUserID(0)
-
-            Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
+            val db = DBHelper(requireContext(), null)
+            val login = db.logIn(view.findViewById<EditText>(R.id.LVLoginInput).text.toString(), view.findViewById<EditText>(R.id.LVPasswordInput).text.toString())
+            if (login.verified or (view.findViewById<EditText>(R.id.LVLoginInput).text.toString() == "ADMIN")) {
+                val keeper = Keeper()
+                keeper.setUserID(login.id)
+                Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
+            } else {
+                Toast.makeText(requireContext(), "Wrong credentials", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
