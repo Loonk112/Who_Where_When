@@ -53,5 +53,21 @@ class ManView_EmpView_DetView_CredentialsChange : Fragment() {
                 Toast.makeText(view.context, "Wrong password" , Toast.LENGTH_SHORT).show()
             }
         }
+
+        if ((keeper.getUserID() != 0) and
+            (
+                (db.getEmployee(keeper.getEmployeeId()).perms.toString() == "Manager") and
+                (keeper.getEmployeeId() != keeper.getUserID())
+            )) {
+            confirmPass.isClickable = false
+            confirmPass.isEnabled = false
+            oldPassIn.isClickable = false
+            oldPassIn.isEnabled = false
+            newPassIn.isClickable = false
+            newPassIn.isEnabled = false
+            newPassIn2.isClickable = false
+            newPassIn2.isEnabled = false
+        }
+
     }
 }

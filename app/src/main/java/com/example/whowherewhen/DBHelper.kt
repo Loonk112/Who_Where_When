@@ -30,6 +30,18 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 "FOREIGN KEY ($TIME_EMPLOYEE_COL) REFERENCES ${EMPLOYEE_TABLE_NAME}($EMPLOYEE_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE, " +
                 "FOREIGN KEY ($TIME_TASK_COL) REFERENCES ${TASK_TABLE_NAME}($TASK_ID_COL) ON UPDATE CASCADE ON DELETE CASCADE)")
         db.execSQL(timeQuery)
+
+        var values = ContentValues()
+        values.put(EMPLOYEE_ID_COL, 0)
+        values.put(EMPLOYEE_NAME_COl, "ADMIN")
+        values.put(EMPLOYEE_SURNAME_COL, "ADMIN")
+        values.put(EMPLOYEE_PERMISSION_COL, "Manager")
+        db.insert(EMPLOYEE_TABLE_NAME, null, values)
+        values = ContentValues()
+        values.put(PASS_EMPLOYEE_COL, 0)
+        values.put(PASS_LOGIN_COl, "ADMIN")
+        values.put(PASS_BODY_COl, "Zaq12wsx")
+        db.insert(PASS_TABLE_NAME, null, values)
     }
 
     override fun onOpen(db: SQLiteDatabase?) {
@@ -39,7 +51,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
         db.execSQL("DROP TABLE IF EXISTS $EMPLOYEE_TABLE_NAME")
-        //TODO: Passwords
+        db.execSQL("DROP TABLE IF EXISTS $PASS_TABLE_NAME")
         db.execSQL("DROP TABLE IF EXISTS $TASK_GROUP_TABLE_NAME")
         db.execSQL("DROP TABLE IF EXISTS $TASK_TABLE_NAME")
         db.execSQL("DROP TABLE IF EXISTS $GROUP_WORKER_TABLE_NAME")
@@ -420,7 +432,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         private const val DATABASE_NAME = "MAIN_DATABASE"
 
-        private val DATABASE_VERSION = 4
+        private val DATABASE_VERSION = 5
 
         const val EMPLOYEE_TABLE_NAME = "employee_table"
         const val EMPLOYEE_ID_COL = "id"

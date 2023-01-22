@@ -62,7 +62,7 @@ class ManView_EmpView_RecyclerViewAdapter (private val employeeList: ArrayList<E
             notifyDataSetChanged()
         }
 
-        if ((keeper.getUserID() == employeeList[position].id)) {
+        if (((employeeList[position].perms.toString() == "Manager") and (keeper.getUserID() != 0)) or (employeeList[position].id == 0)) {
             holder.deleteBtn.isClickable = false
             holder.deleteBtn.isEnabled = false
             Toast.makeText(holder.view.context, "${keeper.getUserID()}", Toast.LENGTH_SHORT).show()

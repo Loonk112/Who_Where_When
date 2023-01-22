@@ -29,10 +29,14 @@ class LoginView : Fragment() {
         confirmLogin.setOnClickListener {
             val db = DBHelper(requireContext(), null)
             val login = db.logIn(view.findViewById<EditText>(R.id.LVLoginInput).text.toString(), view.findViewById<EditText>(R.id.LVPasswordInput).text.toString())
-            if (login.verified or (view.findViewById<EditText>(R.id.LVLoginInput).text.toString() == "ADMIN")) {
+            if (login.verified or (view.findViewById<EditText>(R.id.LVLoginInput).text.toString() == "ADMIN")) { //TODO: <----
                 val keeper = Keeper()
                 keeper.setUserID(login.id)
-                Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
+                if (db.getEmployee(keeper.getUserID()).perms.toString() == "Manager") {
+                    Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
+                } else {
+                    Navigation.findNavController(view).navigate(R.id.action_loginView_to_employeeView)
+                }
             } else {
                 Toast.makeText(requireContext(), "Wrong credentials", Toast.LENGTH_SHORT).show()
             }

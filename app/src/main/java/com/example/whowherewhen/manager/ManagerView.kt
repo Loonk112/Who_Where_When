@@ -31,6 +31,11 @@ class ManagerView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_managerView_to_loginView)
         }
 
+        val switchButton = view.findViewById<ImageButton>(R.id.ManView_Switch)
+        switchButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_managerView_to_employeeView)
+        }
+
         loadFragment(ManView_EmployeesView())
 
         val bNav = view.findViewById<BottomNavigationView>(R.id.ManView_BottomNav)
