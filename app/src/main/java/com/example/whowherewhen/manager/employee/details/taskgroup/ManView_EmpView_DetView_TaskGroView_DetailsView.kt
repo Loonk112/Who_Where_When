@@ -1,4 +1,4 @@
-package com.example.whowherewhen.manager.taskgroup.details.employee
+package com.example.whowherewhen.manager.employee.details.taskgroup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
-import com.example.whowherewhen.data.ExtendedGroupEmployeeData
 import com.example.whowherewhen.data.TaskTimeData
 
 
-class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
+class ManView_EmpView_DetView_TaskGroView_DetailsView : Fragment() {
 
     lateinit var data: ArrayList<TaskTimeData>
 
@@ -25,7 +24,7 @@ class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_man_view_task_gro_view_det_view_emp_view_time_view, container, false)
+        val view = inflater.inflate(R.layout.fragment_man_view__emp_view__det_view__task_gro_view__details_view, container, false)
 
         val keeper = Keeper()
 
@@ -34,7 +33,7 @@ class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
 
         val recycler = view.findViewById<RecyclerView>(R.id.ManView_TaskGroView_DetView_EmpView_TimeView_RecyclerView)
         recycler.layoutManager = LinearLayoutManager(activity)
-        recycler.adapter = ManView_TaskGroView_DetView_EmpView_TimeView_RecyclerViewAdapter(data)
+        recycler.adapter = ManView_EmpView_DetView_TaskGroView_DetView_RecyclerViewAdapter(data)
 
         return view
     }
@@ -42,10 +41,9 @@ class ManView_TaskGroView_DetView_EmpView_TimeView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val returnButton = view.findViewById<ImageButton>(R.id.ManView_TaskGroView_DetView_EmpView_TimeView_Return)
+        val returnButton = view.findViewById<ImageButton>(R.id.ManView_EmpView_DetView_TaskGroView_DetView_ReturnBtn)
         returnButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_EmpView_TimeView_to_ManView_TaskGroView_DetailsView)
+            Navigation.findNavController(view).navigate(R.id.action_manView_EmpView_DetView_TaskGroView_DetailsView_to_ManView_EmpView_DetailsView)
         }
-
     }
 }

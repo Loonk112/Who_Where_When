@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.ExtendedTaskGroupData
 import com.example.whowherewhen.data.TaskGroupData
 import com.example.whowherewhen.manager.employee.ManView_EmpView_RecyclerViewAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_TaskGroupsView : Fragment() {
 
-    lateinit var data: ArrayList<TaskGroupData>
+    lateinit var data: ArrayList<ExtendedTaskGroupData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +31,7 @@ class ManView_TaskGroupsView : Fragment() {
         recycler.layoutManager = LinearLayoutManager(activity)
 
         val db = DBHelper(requireContext(), null)
-        data = db.getAllTaskGroups()
+        data = db.getExtendedTaskGroups()
 
         recycler.adapter = ManView_TaskGroView_RecyclerViewAdapter(data)
 
@@ -54,6 +55,11 @@ class ManView_TaskGroupsView : Fragment() {
             recycler.adapter = ManView_TaskGroView_RecyclerViewAdapter(data)
         }
         val sortName = view.findViewById<TextView>(R.id.ManView_TaskGroView_TextViewBtn_Name)
+        sortName.setOnClickListener {
+            data.sortBy { it.name.toString().uppercase() }
+            recycler.adapter = ManView_TaskGroView_RecyclerViewAdapter(data)
+        }
+        val sortTime = view.findViewById<TextView>(R.id.ManView_TaskGroView_TextViewBtn_Time)
         sortName.setOnClickListener {
             data.sortBy { it.name.toString().uppercase() }
             recycler.adapter = ManView_TaskGroView_RecyclerViewAdapter(data)

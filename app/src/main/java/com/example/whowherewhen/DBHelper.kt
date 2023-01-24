@@ -4,9 +4,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 import com.example.whowherewhen.data.*
 
-class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
+class DBHelper(val context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
 
@@ -256,6 +257,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         db.close()
     }
+
     fun deleteTaskGroup(id: Int) {
         val db = this.writableDatabase
         db.delete(
@@ -264,6 +266,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
             arrayOf(id.toString())
         )
     }
+
     fun getAllTaskGroups(): ArrayList<TaskGroupData> {
 
         val db = this.readableDatabase
@@ -286,7 +289,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun getEmployeesTaskGroups(id: Int): ArrayList<TaskGroupData> {
 
         val db = this.readableDatabase
-        val sql = "SELECT ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_ID_COL, $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL = $id"
+        val sql = "SELECT ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL, $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME INNER JOIN $GROUP_WORKER_TABLE_NAME ON ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL = $id"
         val storeTaskGroups = ArrayList<TaskGroupData>()
         val cursor = db.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
@@ -321,7 +324,68 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return storeTaskGroups
     }
 
-    //TODO: Add ExtendedTaskGroupData getter
+    fun getGroupName(id: Int): String {
+
+        val db = this.readableDatabase
+        val sql = "SELECT $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME WHERE $TASK_GROUP_ID_COL = $id"
+        lateinit var store: String
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                store = cursor.getString(0)
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return store
+    }
+
+    fun getExtendedTaskGroups(): ArrayList<ExtendedTaskGroupData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT $TASK_GROUP_ID_COL, $TASK_GROUP_NAME_COL, IFNULL(TIME, 0) AS TIME FROM $TASK_GROUP_TABLE_NAME LEFT JOIN " +
+                "(SELECT $TASK_GROUP_COL AS TG2, SUM($TIME_STOP_COL - $TIME_START_COL) AS TIME FROM $TIME_TABLE_NAME INNER JOIN " +
+                "$TASK_TABLE_NAME ON ${TASK_TABLE_NAME}.$TASK_ID_COL = ${TIME_TABLE_NAME}.$TIME_TASK_COL WHERE NOT ${TIME_TABLE_NAME}.$TIME_STOP_COL IS -1 GROUP BY ${TASK_TABLE_NAME}.$TASK_GROUP_COL) " +
+                "ON $TASK_GROUP_ID_COL = TG2"
+        val storeTaskGroups = ArrayList<ExtendedTaskGroupData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val time = cursor.getString(2).toLong()
+                storeTaskGroups.add(ExtendedTaskGroupData(id, name, time))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+        return storeTaskGroups
+    }
+
+    fun getExtendedUserTaskGroups(userId: Int): ArrayList<ExtendedTaskGroupData> {
+
+        val db = this.readableDatabase
+        val sql = "SELECT T1.$TASK_GROUP_ID_COL, T1.$TASK_GROUP_NAME_COL, T1.TIME FROM (SELECT $TASK_GROUP_ID_COL, $TASK_GROUP_NAME_COL, IFNULL(TIME, 0) AS TIME FROM $TASK_GROUP_TABLE_NAME LEFT JOIN " +
+                "(SELECT $TASK_GROUP_COL AS TG2, SUM($TIME_STOP_COL - $TIME_START_COL) AS TIME FROM $TIME_TABLE_NAME INNER JOIN " +
+                "$TASK_TABLE_NAME ON ${TASK_TABLE_NAME}.$TASK_ID_COL = ${TIME_TABLE_NAME}.$TIME_TASK_COL WHERE ${TIME_TABLE_NAME}.$TIME_EMPLOYEE_COL IS $userId AND NOT ${TIME_TABLE_NAME}.$TIME_STOP_COL IS -1 GROUP BY ${TASK_TABLE_NAME}.$TASK_GROUP_COL) " +
+                "ON $TASK_GROUP_ID_COL = TG2) AS T1 INNER JOIN " +
+                "(SELECT ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL, $TASK_GROUP_NAME_COL FROM $TASK_GROUP_TABLE_NAME INNER JOIN " +
+                "$GROUP_WORKER_TABLE_NAME ON ${TASK_GROUP_TABLE_NAME}.$TASK_GROUP_ID_COL = ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_GROUP_COL WHERE ${GROUP_WORKER_TABLE_NAME}.$GROUP_WORKER_EMPLOYEE_COL = $userId) AS T2 ON T1.$TASK_GROUP_ID_COL IS T2.$GROUP_WORKER_GROUP_COL"
+        val storeTaskGroups = ArrayList<ExtendedTaskGroupData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val time = cursor.getString(2).toLong()
+                storeTaskGroups.add(ExtendedTaskGroupData(id, name, time))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+        return storeTaskGroups
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Tasks
 
@@ -366,14 +430,51 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return storeTasks
     }
 
+    fun getTaskName(id: Int): String {
+
+        val db = this.readableDatabase
+        val sql = "SELECT $TASK_NAME_COL FROM $TASK_TABLE_NAME WHERE $TASK_ID_COL = $id"
+        lateinit var store: String
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                store = cursor.getString(0)
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return store
+    }
+
+    fun getEmployeeExtendedTaskGroupTasks(desiredGroupId: Int, empId: Int): ArrayList<ExtendedTaskData> {
+        val db = this.readableDatabase
+        val sql = "SELECT $TASK_ID_COL, $TASK_GROUP_COL, $TASK_NAME_COL, $TASK_STATUS_COL, IFNULL(TIME, 0) FROM $TASK_TABLE_NAME " +
+                "LEFT JOIN (SELECT $TIME_TASK_COL AS TASKID, SUM($TIME_STOP_COL - $TIME_START_COL) AS TIME FROM $TIME_TABLE_NAME WHERE $TIME_EMPLOYEE_COL IS $empId AND NOT ${TIME_TABLE_NAME}.$TIME_STOP_COL IS -1 GROUP BY $TIME_TASK_COL) ON TASKID = $TASK_ID_COL " +
+                "WHERE $TASK_GROUP_COL IS $desiredGroupId"
+        val storeTasks = ArrayList<ExtendedTaskData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val groupID = cursor.getString(1).toInt()
+                val name = cursor.getString(2)
+                val status = cursor.getString(3).toInt()
+                val time = cursor.getString(4).toLong()
+                storeTasks.add(ExtendedTaskData(id, groupID, name, status, time))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return storeTasks
+    }
+
     fun changeTaskStatus(id: Int, status: Int) {
         val db = this.writableDatabase
         val rawSQL = "UPDATE $TASK_TABLE_NAME SET $TASK_STATUS_COL = $status WHERE $TASK_ID_COL = $id"
         db.execSQL(rawSQL)
     }
-
-
-    //TODO: Add ExtendedTaskData getter
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Group - Worker
 
@@ -422,17 +523,90 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     ////////////////////////////////////////////////////////////////////////////////////////////////Time table
 
-    //TODO: Time Table items
+    fun addTime(employeeId: Int, taskId: Int){
+        val values = ContentValues()
+        val start = System.currentTimeMillis()/1000
+        values.put(TIME_EMPLOYEE_COL, employeeId)
+        values.put(TIME_TASK_COL, taskId)
+        values.put(TIME_START_COL, start)
+        values.put(TIME_STOP_COL, -1)
+        val db = this.writableDatabase
+        db.insert(TIME_TABLE_NAME, null, values)
+        db.close()
+    }
 
+    fun updateTime(employeeId: Int, taskId: Int){
+        val db = this.readableDatabase
+        val stop = System.currentTimeMillis()/1000
+        val sql = "UPDATE $TIME_TABLE_NAME SET $TIME_STOP_COL = $stop WHERE $TIME_EMPLOYEE_COL IS $employeeId AND $TIME_TASK_COL IS $taskId AND $TIME_STOP_COL = -1"
+        db.execSQL(sql)
+    }
 
+    fun checkIfInProgress(employeeId: Int, taskId: Int): Boolean{
+        val db = this.readableDatabase
+        val sql = "SELECT COUNT(*) FROM $TIME_TABLE_NAME WHERE $TIME_TASK_COL IS $taskId AND $TIME_EMPLOYEE_COL IS $employeeId AND $TIME_STOP_COL IS -1"
+        val cursor = db.rawQuery(sql, null)
+        var tmp = false
+        if (cursor.moveToFirst()) {
+            if (cursor.getString(0).toInt() > 0) {
+                tmp = true
+            }
+        }
+        cursor.close()
+        return tmp
+    }
 
+    fun getEmployeeTaskGroupTimes(employeeId: Int, groupId: Int): ArrayList<TaskTimeData> {
+        val db = this.readableDatabase
+        val sql = "SELECT ${TASK_TABLE_NAME}.$TASK_ID_COL, ${TASK_TABLE_NAME}.$TASK_NAME_COL, $TIME_START_COL, $TIME_STOP_COL, ($TIME_STOP_COL-$TIME_START_COL) AS SUM FROM $TIME_TABLE_NAME INNER JOIN $TASK_TABLE_NAME ON ${TIME_TABLE_NAME}.$TIME_TASK_COL = ${TASK_TABLE_NAME}.$TASK_ID_COL WHERE ${TASK_TABLE_NAME}.$TASK_GROUP_COL = $groupId AND $TIME_EMPLOYEE_COL IS $employeeId AND NOT ${TIME_TABLE_NAME}.$TIME_STOP_COL IS-1"
+        val store = ArrayList<TaskTimeData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val start = cursor.getString(2).toLong()
+                val stop = cursor.getString(3).toLong()
+                val sum = cursor.getString(4).toLong()
+                store.add(TaskTimeData(id, name, start, stop, sum))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
 
+        return store
+    }
+
+    fun getTaskTimes(employeeId: Int, taskId: Int): ArrayList<EmployeeTimeData> {
+        val db = this.readableDatabase
+        val sql = "SELECT ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL, ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_NAME_COl, ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_SURNAME_COL, $TIME_START_COL, $TIME_STOP_COL, ($TIME_STOP_COL-$TIME_START_COL) AS SUM FROM " +
+                "$EMPLOYEE_TABLE_NAME INNER JOIN " +
+                "$TIME_TABLE_NAME ON ${TIME_TABLE_NAME}.$TIME_EMPLOYEE_COL = ${EMPLOYEE_TABLE_NAME}.$EMPLOYEE_ID_COL WHERE " +
+                "$TIME_TASK_COL IS $taskId AND $TIME_EMPLOYEE_COL IS $employeeId AND NOT ${TIME_TABLE_NAME}.$TIME_STOP_COL IS-1"
+        val store = ArrayList<EmployeeTimeData>()
+        val cursor = db.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getString(0).toInt()
+                val name = cursor.getString(1)
+                val surname = cursor.getString(2)
+                val start = cursor.getString(3).toLong()
+                val stop = cursor.getString(4).toLong()
+                val sum = cursor.getString(5).toLong()
+                store.add(EmployeeTimeData(id, name, surname, start, stop, sum))
+            }
+            while (cursor.moveToNext())
+        }
+        cursor.close()
+
+        return store
+    }
 
     companion object{
 
         private const val DATABASE_NAME = "MAIN_DATABASE"
 
-        private val DATABASE_VERSION = 5
+        private val DATABASE_VERSION = 7
 
         const val EMPLOYEE_TABLE_NAME = "employee_table"
         const val EMPLOYEE_ID_COL = "id"

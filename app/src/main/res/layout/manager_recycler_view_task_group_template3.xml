@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageButton
-        android:id="@+id/ManRecView_TaskGroTemp_DeleteTaskGroup"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/ic_baseline_remove_24"
-        android:contentDescription="Remove task group"/>
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/ManRecView_TaskGroTemp_TaskGroupId"
@@ -25,7 +17,7 @@
         android:id="@+id/ManRecView_TaskGroTemp_TaskGroupName"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:gravity="center_vertical"
         android:text="Task Group Name" />
 

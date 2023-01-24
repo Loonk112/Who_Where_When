@@ -32,7 +32,7 @@ class LoginView : Fragment() {
             if (login.verified or (view.findViewById<EditText>(R.id.LVLoginInput).text.toString() == "ADMIN")) { //TODO: <----
                 val keeper = Keeper()
                 keeper.setUserID(login.id)
-                if (db.getEmployee(keeper.getUserID()).perms.toString() == "Manager") {
+                if (db.getEmployee(keeper.getUserID()).perms == "Manager") {
                     Navigation.findNavController(view).navigate(R.id.action_loginView_to_managerView)
                 } else {
                     Navigation.findNavController(view).navigate(R.id.action_loginView_to_employeeView)

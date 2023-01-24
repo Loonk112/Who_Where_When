@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_Title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -38,11 +39,81 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/teal_200"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Id"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="ID" />
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Name"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Surname"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="Surname" />
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Start"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="Start" />
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Stop"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="Stop" />
+
+        <TextView
+            android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_TextView_Sum"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="Sum" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ManView_TakGroView_DetView_TaskView_TimeView_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
+        tools:listitem="@layout/manager_recycler_view_employee_time_template"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

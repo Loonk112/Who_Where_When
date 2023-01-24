@@ -10,19 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.ExtendedTaskGroupData
 import com.example.whowherewhen.data.TaskGroupData
 
-class ManView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<ManView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
+class ManView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<ExtendedTaskGroupData>) : RecyclerView.Adapter<ManView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
         val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_DeleteTaskGroup)!!
         val idView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupId)!!
         val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupName)!!
+        val timeView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupTime)!!
         val detailBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_TaskGroupDetails)!!
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.manager_recycler_view_task_group_template, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.manager_recycler_view_task_group_template2, parent, false)
         return ViewHolder(view)
     }
 
@@ -30,6 +32,7 @@ class ManView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayL
 
         holder.idView.text = taskGroupList[position].id.toString()
         holder.nameView.text = taskGroupList[position].name
+        holder.timeView.text = "${taskGroupList[position].time/3600}h ${taskGroupList[position].time/60}m"
 
         holder.deleteBtn.setOnClickListener {
             val db = DBHelper(holder.view.context, null)

@@ -18,14 +18,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView_Title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Employee Time Table"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
             android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView_Return"
@@ -38,11 +41,71 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/teal_200"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TextViewBtn_ID"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="ID" />
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TextViewBtn_Name"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TextViewBtn_Start"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Start" />
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TextViewBtn_Stop"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Stop" />
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_EmpView_TextViewBtn_Sum"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sum" />
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ManView_TaskGroView_DetView_EmpView_TimeView_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
+        tools:listitem="@layout/manager_recycler_view_task_group_time_template"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

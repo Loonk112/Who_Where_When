@@ -4,17 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageButton
-        android:id="@+id/ManRecView_TaskGroTemp_DeleteTaskGroup"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/ic_baseline_remove_24"
-        android:contentDescription="Remove task group"/>
-
     <TextView
-        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupId"
-        android:background="@color/gray"
+        android:id="@+id/ManRecView_TaskTemp_TaskId"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -22,28 +13,27 @@
         android:text="ID" />
 
     <TextView
-        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupName"
+        android:id="@+id/ManRecView_TaskTemp_TaskName"
+        android:background="@color/gray"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:gravity="center_vertical"
-        android:text="Task Group Name" />
+        android:text="Task Name" />
 
     <TextView
-        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupTime"
+        android:id="@+id/ManRecView_TaskTemp_TaskTime"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:background="@color/gray"
         android:gravity="center"
-        android:text="Group Time" />
+        android:text="Task Time" />
 
     <ImageButton
-        android:id="@+id/ManRecView_TaskGroTemp_TaskGroupDetails"
+        android:id="@+id/ManRecView_TaskTemp_Record"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
-        android:contentDescription="See task group details"/>
-
+        android:contentDescription="See Task Time table"/>
 </LinearLayout>

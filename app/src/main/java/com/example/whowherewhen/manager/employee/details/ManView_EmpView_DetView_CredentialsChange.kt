@@ -25,7 +25,6 @@ class ManView_EmpView_DetView_CredentialsChange : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val employeeLogin = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_CreCha_EmployeeLogin)
         val oldPassIn = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_CreCha_OldPassword)
         val newPassIn = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_CreCha_NewPassword)
         val newPassIn2 = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_CreCha_NewPassword2)
@@ -33,8 +32,6 @@ class ManView_EmpView_DetView_CredentialsChange : Fragment() {
 
         val keeper = Keeper();
         val db = DBHelper(requireContext(), null)
-
-        employeeLogin.text = db.getLogin(keeper.getEmployeeId())
 
 
 

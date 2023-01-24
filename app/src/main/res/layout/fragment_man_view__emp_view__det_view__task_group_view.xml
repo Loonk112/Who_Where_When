@@ -36,17 +36,8 @@
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="10"
             android:text="Task Group Name" />
-
-        <TextView
-            android:id="@+id/ManView_EmpView_DetView_TaskGroView_TextViewBtn_Time"
-            android:textColor="@color/purple_500"
-            android:textStyle="bold"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:text="Time Taken" />
 
 
         <TextView
@@ -61,11 +52,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        tools:listitem="@layout/manager_recycler_view_task_group_template2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/manager_recycler_view_task_group_template" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ManView_EmpView_DetView_TaskGroView_FloatingActionButton"

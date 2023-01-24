@@ -42,7 +42,7 @@ class ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter (private val emplo
 
         holder.timeBtn.setOnClickListener {
             val keeper = Keeper()
-            keeper.setGroupEmployeeID(employeeList[position].conn_id)
+            keeper.setEmployeeId(employeeList[position].emp_id)
             Navigation.findNavController(holder.view).navigate(R.id.action_ManView_TaskGroView_DetailsView_to_ManView_TaskGroView_DetView_EmpView_TimeView)
         }
     }
