@@ -11,13 +11,15 @@ import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
 import com.example.whowherewhen.data.ExtendedGroupEmployeeData
+import com.example.whowherewhen.data.ExtendedGroupEmployeeTimeData
 
-class ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter (private val employeeList: ArrayList<ExtendedGroupEmployeeData>) : RecyclerView.Adapter<ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter.ViewHolder>()  {
+class ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter (private val employeeList: ArrayList<ExtendedGroupEmployeeTimeData>) : RecyclerView.Adapter<ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
         val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecVie_EmpTemp2_DeleteEmployee)!!
         val idView = view.findViewById<TextView>(R.id.ManRecVie_EmpTemp2_EmployeeId)!!
         val nameView = view.findViewById<TextView>(R.id.ManRecVie_EmpTemp2_EmployeeName)!!
         val surnameView = view.findViewById<TextView>(R.id.ManRecVie_EmpTemp2_EmployeeSurname)!!
+        val timeView = view.findViewById<TextView>(R.id.ManRecVie_EmpTemp2_EmployeeTimeView)!!
         val timeBtn = view.findViewById<ImageButton>(R.id.ManRecVie_EmpTemp2_EmployeeTime)!!
     }
 
@@ -32,6 +34,7 @@ class ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter (private val emplo
         holder.idView.text = employeeList[position].emp_id.toString()
         holder.nameView.text = employeeList[position].name
         holder.surnameView.text = employeeList[position].surname
+        holder.timeView.text = "${employeeList[position].time/3600}:${(employeeList[position].time/60)%60}"
 
         holder.deleteBtn.setOnClickListener {
             val db = DBHelper(holder.view.context, null)

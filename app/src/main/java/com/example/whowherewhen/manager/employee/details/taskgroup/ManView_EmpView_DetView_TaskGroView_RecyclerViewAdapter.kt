@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.ExtendedTaskGroupData
 import com.example.whowherewhen.data.TaskGroupData
 
-class ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<TaskGroupData>) : RecyclerView.Adapter<ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
+class ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter (private val taskGroupList: ArrayList<ExtendedTaskGroupData>) : RecyclerView.Adapter<ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
         val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_DeleteTaskGroup)!!
         val idView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupId)!!
         val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupName)!!
+        val timeView = view.findViewById<TextView>(R.id.ManRecView_TaskGroTemp_TaskGroupTime)!!
         val detailsBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskGroTemp_TaskGroupDetails)!!
     }
 
@@ -30,6 +32,7 @@ class ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter (private val taskG
 
         holder.idView.text = taskGroupList[position].id.toString()
         holder.nameView.text = taskGroupList[position].name
+        holder.timeView.text = "${taskGroupList[position].time/3600}:${(taskGroupList[position].time/60)%60}"
 
         holder.deleteBtn.setOnClickListener {
             val db = DBHelper(holder.view.context, null)

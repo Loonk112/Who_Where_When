@@ -31,7 +31,7 @@ class EmpView_TaskGroView_RecyclerViewAdapter(private val taskGroupList: ArrayLi
 
         holder.idView.text = taskGroupList[position].id.toString()
         holder.nameView.text = taskGroupList[position].name
-        holder.timeView.text = "${taskGroupList[position].time/3600}h ${taskGroupList[position].time/60}m"
+        holder.timeView.text = "${taskGroupList[position].time/3600}:${(taskGroupList[position].time/60)%60}"
 
         holder.detailsBtn.setOnClickListener {
             keeper.setTaskGroupId(taskGroupList[position].id)

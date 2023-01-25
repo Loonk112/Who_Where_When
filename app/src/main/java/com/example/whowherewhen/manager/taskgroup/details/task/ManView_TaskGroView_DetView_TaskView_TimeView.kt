@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +45,39 @@ class ManView_TaskGroView_DetView_TaskView_TimeView : Fragment() {
         val returnButton = view.findViewById<ImageButton>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_Return)
         returnButton.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_ManView_TaskGroView_DetView_TaskView_TimeView_to_ManView_TaskGroView_DetailsView)
+        }
+
+        val recycler = view.findViewById<RecyclerView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_RecyclerView)
+
+        val sortId = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Id)
+        sortId.setOnClickListener {
+            data.sortBy { it.id }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
+        }
+        val sortName = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Name)
+        sortName.setOnClickListener {
+            data.sortBy { it.name }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
+        }
+        val sortSurname = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Surname)
+        sortSurname.setOnClickListener {
+            data.sortBy { it.surname }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
+        }
+        val sortStart = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Start)
+        sortStart.setOnClickListener {
+            data.sortBy { it.timeStart }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
+        }
+        val sortStop = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Stop)
+        sortStop.setOnClickListener {
+            data.sortBy { it.timeStop }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
+        }
+        val sortSum = view.findViewById<TextView>(R.id.ManView_TakGroView_DetView_TaskView_TimeView_TextView_Sum)
+        sortSum.setOnClickListener {
+            data.sortBy { it.timeSum }
+            recycler.adapter = ManView_TaskGroView_DetView_TaskView_TimeView_RecyclerView(data)
         }
     }
 }

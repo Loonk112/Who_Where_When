@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.ExtendedTaskGroupData
 import com.example.whowherewhen.data.TaskGroupData
 import com.example.whowherewhen.manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmpView_RecyclerViewAdapter
 import com.example.whowherewhen.manager.taskgroup.details.task.ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter
@@ -20,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ManView_EmpView_DetView_TaskGroupView : Fragment() {
 
-    lateinit var data: ArrayList<TaskGroupData>
+    lateinit var data: ArrayList<ExtendedTaskGroupData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,7 @@ class ManView_EmpView_DetView_TaskGroupView : Fragment() {
         val keeper = Keeper()
 
         val db = DBHelper(requireContext(), null)
-        data = db.getEmployeesTaskGroups(keeper.getEmployeeId())
+        data = db.getExtendedUserTaskGroups(keeper.getEmployeeId())
 
         val recycler = view.findViewById<RecyclerView>(R.id.ManView_EmpView_DetView_TaskGroView_RecyclerView)
         recycler.layoutManager = LinearLayoutManager(activity)
@@ -58,6 +59,11 @@ class ManView_EmpView_DetView_TaskGroupView : Fragment() {
         val sortName = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_TaskGroView_TextViewBtn_Name)
         sortName.setOnClickListener {
             data.sortBy { it.name.toString().uppercase() }
+            recycler.adapter = ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter(data)
+        }
+        val sortTime = view.findViewById<TextView>(R.id.ManView_EmpView_DetView_TaskGroView_TextViewBtn_Time)
+        sortTime.setOnClickListener {
+            data.sortBy { it.time }
             recycler.adapter = ManView_EmpView_DetView_TaskGroView_RecyclerViewAdapter(data)
         }
     }

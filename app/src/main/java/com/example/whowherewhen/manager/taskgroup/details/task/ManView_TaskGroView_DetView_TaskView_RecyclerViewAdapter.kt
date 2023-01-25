@@ -11,14 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.DBHelper
 import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
+import com.example.whowherewhen.data.ExtendedTaskData
 import com.example.whowherewhen.data.TaskData
 
-class ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter (private val taskList: ArrayList<TaskData>) : RecyclerView.Adapter<ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter.ViewHolder>()  {
+class ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter (private val taskList: ArrayList<ExtendedTaskData>) : RecyclerView.Adapter<ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter.ViewHolder>()  {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
         val deleteBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskTemp2_DeleteTask)!!
         val idView = view.findViewById<TextView>(R.id.ManRecView_TaskTemp2_TaskId)!!
         val nameView = view.findViewById<TextView>(R.id.ManRecView_TaskTemp2_TaskName)!!
         val status = view.findViewById<Button>(R.id.ManRecView_TaskTemp2_Status)!!
+        val time = view.findViewById<TextView>(R.id.ManRecView_TaskTemp2_TaskTimeView)!!
         val timeBtn = view.findViewById<ImageButton>(R.id.ManRecView_TaskTemp2_TaskTime)!!
     }
 
@@ -34,6 +36,8 @@ class ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter (private val task
         holder.idView.text = taskList[position].id.toString()
         holder.nameView.text = taskList[position].name
         holder.status.text = taskList[position].status.toString()
+        holder.time.text = "${taskList[position].time/3600}:${(taskList[position].time/60)%60}"
+
         if (taskList[position].status == 0) {
             holder.status.text = "In progress"
         } else {

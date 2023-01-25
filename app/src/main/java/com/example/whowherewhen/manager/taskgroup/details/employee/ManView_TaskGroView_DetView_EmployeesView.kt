@@ -14,13 +14,14 @@ import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
 import com.example.whowherewhen.data.EmployeeData
 import com.example.whowherewhen.data.ExtendedGroupEmployeeData
+import com.example.whowherewhen.data.ExtendedGroupEmployeeTimeData
 import com.example.whowherewhen.manager.taskgroup.details.task.ManView_TaskGroView_DetView_TaskView_RecyclerViewAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class ManView_TaskGroView_DetView_EmployeesView : Fragment() {
 
-    lateinit var data: ArrayList<ExtendedGroupEmployeeData>
+    lateinit var data: ArrayList<ExtendedGroupEmployeeTimeData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class ManView_TaskGroView_DetView_EmployeesView : Fragment() {
         val keeper = Keeper()
 
         val db = DBHelper(requireContext(), null)
-        data = db.getTaskGroupEmployees(keeper.getTaskGroupId())
+        data = db.getTaskGroupExtendedEmployees(keeper.getTaskGroupId())
 
         val recycler = view.findViewById<RecyclerView>(R.id.ManView_TaskGroView_DetView_EmpView_RecyclerView)
         recycler.layoutManager = LinearLayoutManager(activity)

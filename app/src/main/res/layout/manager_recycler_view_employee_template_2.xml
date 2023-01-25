@@ -2,48 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageButton
-        android:id="@+id/ManRecVie_EmpTemp2_DeleteEmployee"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:contentDescription="Remove employee"
-        app:srcCompat="@drawable/ic_baseline_remove_24" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ManRecVie_EmpTemp2_DeleteEmployee"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:contentDescription="Remove employee"
+            app:srcCompat="@drawable/ic_baseline_remove_24" />
+
+        <TextView
+            android:id="@+id/ManRecVie_EmpTemp2_EmployeeId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="ID" />
+
+        <TextView
+            android:id="@+id/ManRecVie_EmpTemp2_EmployeeName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/ManRecVie_EmpTemp2_EmployeeSurname"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:background="@color/gray"
+            android:gravity="center_vertical"
+            android:text="Surname" />
+
+        <TextView
+            android:id="@+id/ManRecVie_EmpTemp2_EmployeeTimeView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:text="Time" />
+
+        <ImageButton
+            android:id="@+id/ManRecVie_EmpTemp2_EmployeeTime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:contentDescription="See employee details"
+            app:srcCompat="@drawable/ic_baseline_access_time_24" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/ManRecVie_EmpTemp2_EmployeeId"
-        android:background="@color/gray"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:text="ID" />
-
-    <TextView
-        android:id="@+id/ManRecVie_EmpTemp2_EmployeeName"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="7"
-        android:gravity="center_vertical"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/ManRecVie_EmpTemp2_EmployeeSurname"
-        android:background="@color/gray"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:gravity="center_vertical"
-        android:text="Surname" />
-
-    <ImageButton
-        android:id="@+id/ManRecVie_EmpTemp2_EmployeeTime"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:contentDescription="See employee details"
-        app:srcCompat="@drawable/ic_baseline_access_time_24" />
-
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="0.01dp"/>
 </LinearLayout>

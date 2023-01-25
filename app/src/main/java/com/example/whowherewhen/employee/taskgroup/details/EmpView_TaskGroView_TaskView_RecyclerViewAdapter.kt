@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whowherewhen.Keeper
@@ -30,11 +31,17 @@ class EmpView_TaskGroView_TaskView_RecyclerViewAdapter(private val taskList: Arr
 
         holder.idView.text = taskList[position].id.toString()
         holder.nameView.text = taskList[position].name
-        holder.timeView.text = "${taskList[position].time/3600}h ${taskList[position].time/60}m"
+        holder.timeView.text = "${taskList[position].time/3600}:${(taskList[position].time/60)%60}"
 
-        holder.detailsBtn.setOnClickListener {
-            keeper.setTaskId(taskList[position].id)
-            Navigation.findNavController(holder.view).navigate(R.id.action_empView_TaskGroView_TasksView_to_empView_TaskGroView_TaskView_Time)
+        if (taskList[position].status == 1) {
+            holder.detailsBtn.isClickable = false
+            holder.detailsBtn.isEnabled = false
+            holder.detailsBtn.setImageResource(R.drawable.ic_baseline_check_24)
+        } else {
+            holder.detailsBtn.setOnClickListener {
+                keeper.setTaskId(taskList[position].id)
+                Navigation.findNavController(holder.view).navigate(R.id.action_empView_TaskGroView_TasksView_to_empView_TaskGroView_TaskView_Time)
+            }
         }
 
     }

@@ -2,38 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/ManRecView_TaskTemp_TaskId"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="ID" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/ManRecView_TaskTemp_TaskName"
-        android:background="@color/gray"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:gravity="center_vertical"
-        android:text="Task Name" />
+        <TextView
+            android:id="@+id/ManRecView_TaskTemp_TaskId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ID" />
 
-    <TextView
-        android:id="@+id/ManRecView_TaskTemp_TaskTime"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="Task Time" />
+        <TextView
+            android:id="@+id/ManRecView_TaskTemp_TaskName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/gray"
+            android:gravity="center_vertical"
+            android:text="Task Name" />
 
-    <ImageButton
-        android:id="@+id/ManRecView_TaskTemp_Record"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
-        android:contentDescription="See Task Time table"/>
+        <TextView
+            android:id="@+id/ManRecView_TaskTemp_TaskTime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Task Time" />
+
+        <ImageButton
+            android:id="@+id/ManRecView_TaskTemp_Record"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="See Task Time table"
+            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="0.01dp"/>
 </LinearLayout>

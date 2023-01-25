@@ -37,7 +37,7 @@
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:text="Task Name" />
 
         <TextView
@@ -46,9 +46,18 @@
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:gravity="center"
             android:text="Status" />
+
+        <TextView
+            android:id="@+id/ManView_TaskGroView_DetView_TaskView_TextViewBtn_Time"
+            android:textColor="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Time" />
 
         <TextView
             android:layout_width="0dp"
