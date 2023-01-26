@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.R
-import com.example.whowherewhen.manager.employee.ManView_EmployeesView
+import com.example.whowherewhen.employee.EmpView_CredentialsUpdateView
+import com.example.whowherewhen.employee.taskgroup.EmpView_TaskGroupView
 import com.example.whowherewhen.manager.employee.details.taskgroup.ManView_EmpView_DetView_TaskGroupView
-import com.example.whowherewhen.manager.taskgroup.ManView_TaskGroupsView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class ManView_EmpView_DetailsView : Fragment() {
@@ -33,19 +33,28 @@ class ManView_EmpView_DetailsView : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_ManView_EmpView_DetailsView_to_managerView)
         }
 
-        loadFragment(ManView_EmpView_DetView_TaskGroupView())
+        val keeper = Keeper()
 
         val bNav = view.findViewById<BottomNavigationView>(R.id.ManView_EmpView_DetView_BottomNav)
         bNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.ManView_EmpView_DetView_Menu_Credentials -> {
+                    keeper.setManEmp(true)
                     loadFragment(ManView_EmpView_DetView_CredentialsChange())
                 }
                 R.id.ManView_EmpView_DetView_Menu_TaskGroups -> {
+                    keeper.setManEmp(false)
                     loadFragment(ManView_EmpView_DetView_TaskGroupView())
                 }
             }
             true
+        }
+
+        if (keeper.getManEmp()) {
+            loadFragment(ManView_EmpView_DetView_CredentialsChange())
+        } else
+        {
+            loadFragment(ManView_EmpView_DetView_TaskGroupView())
         }
     }
 

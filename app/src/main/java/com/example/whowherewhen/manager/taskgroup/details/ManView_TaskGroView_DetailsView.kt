@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.Navigation
+import com.example.whowherewhen.Keeper
 import com.example.whowherewhen.manager.taskgroup.details.employee.ManView_TaskGroView_DetView_EmployeesView
 import com.example.whowherewhen.R
+import com.example.whowherewhen.manager.employee.ManView_EmployeesView
+import com.example.whowherewhen.manager.taskgroup.ManView_TaskGroupsView
 import com.example.whowherewhen.manager.taskgroup.details.task.ManView_TaskGroView_DetView_TasksView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -27,7 +30,7 @@ class ManView_TaskGroView_DetailsView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadFragment(ManView_TaskGroView_DetView_EmployeesView())
+        val keeper = Keeper()
 
         val returnButton = view.findViewById<ImageButton>(R.id.ManView_TaskGroView_DetView_Return)
         returnButton.setOnClickListener {
@@ -38,13 +41,22 @@ class ManView_TaskGroView_DetailsView : Fragment() {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.ManView_TaskGroView_DetView_Menu_Employees -> {
+                    keeper.setManTask(true)
                     loadFragment(ManView_TaskGroView_DetView_EmployeesView())
                 }
                 R.id.ManView_TaskGroView_DetView_Menu_Tasks -> {
+                    keeper.setManTask(false)
                     loadFragment(ManView_TaskGroView_DetView_TasksView())
                 }
             }
             true
+        }
+
+        if (keeper.getManTask()) {
+            loadFragment(ManView_TaskGroView_DetView_EmployeesView())
+        } else
+        {
+            loadFragment(ManView_TaskGroView_DetView_TasksView())
         }
     }
 

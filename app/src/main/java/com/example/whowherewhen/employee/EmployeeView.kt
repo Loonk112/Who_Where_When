@@ -48,22 +48,29 @@ class EmployeeView : Fragment() {
             switchButton.isVisible = false
         }
 
-        loadFragment(EmpView_TaskGroupView())
+        view.findViewById<TextView>(R.id.EmpView_Title).text = db.getLogin(keeper.getUserID())
 
         val bNav = view.findViewById<BottomNavigationView>(R.id.EmpView_BNav)
         bNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.ManView_EmpView_DetView_Menu_Credentials -> {
                     loadFragment(EmpView_CredentialsUpdateView())
+                    keeper.setEmpMain(true)
                 }
                 R.id.ManView_EmpView_DetView_Menu_TaskGroups -> {
                     loadFragment(EmpView_TaskGroupView())
+                    keeper.setEmpMain(false)
                 }
             }
             true
         }
 
-        view.findViewById<TextView>(R.id.EmpView_Title).text = db.getLogin(keeper.getUserID())
+        if (keeper.getEmpMain()) {
+            loadFragment(EmpView_CredentialsUpdateView())
+        } else
+        {
+            loadFragment(EmpView_TaskGroupView())
+        }
     }
 
     private  fun loadFragment(fragment: Fragment){
